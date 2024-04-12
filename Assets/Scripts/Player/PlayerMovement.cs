@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 movement = new Vector3(10.0f, 0.0f, 0.0f);
+        Vector3 movement = new Vector3(0.0f, 0.0f, 10.0f);
         rb.AddForce(movement);
         Rotate((int)slider.value);
     }
