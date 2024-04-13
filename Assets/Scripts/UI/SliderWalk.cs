@@ -12,6 +12,7 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEnd
     private float angleOffset;
     [SerializeField] private GameObject slider;
     [SerializeField] private GameObject player;
+    public bool isRotating = false;
     const int y_rotation = 0;
     void Start()
         {
@@ -69,6 +70,7 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEnd
 
     private IEnumerator RotateToZero()
     {
+        isRotating = true;
         while (this.transform.eulerAngles.z <= -5 || this.transform.eulerAngles.z >= 5)
         {
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 4);
@@ -77,6 +79,7 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEnd
 
         }
             player.GetComponent<PlayerMovement>().moveDirection = Vector3.zero;
+            isRotating = false;
 
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0);
     }

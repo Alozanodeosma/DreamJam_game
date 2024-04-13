@@ -1992,6 +1992,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 6107339140794150216}
   player: {fileID: 8438036106120229804}
+  isRotating: 0
 --- !u!1 &6193273337295935249
 GameObject:
   m_ObjectHideFlags: 0
@@ -3003,6 +3004,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 8438036106120229804}
   sliderRotation: {fileID: 4566978194249676694}
+  sliderWalk: {fileID: 6107339140794150216}
   speed: 5
   moveDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &8870723072147935423

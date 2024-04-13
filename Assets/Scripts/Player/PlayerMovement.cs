@@ -8,8 +8,9 @@ public class PlayerMovement : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private GameObject player;
-        //[SerializeField] private Slider slider;
+    //[SerializeField] private Slider slider;
     [SerializeField] private GameObject sliderRotation;
+    [SerializeField] private GameObject sliderWalk;
     private Rigidbody rb;
 
 
@@ -33,14 +34,8 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.useGravity = true;          
         }
-        if (GetComponent<Collider>().CompareTag("Wall"))
-        {
-            return;
-        }
-        if(GetComponent<Rigidbody>().velocity.magnitude < 0.05f)
-        {
-            GetComponent<Rigidbody>().velocity = Vector3.zero;
-        }
+
+
 
 
     }
@@ -52,10 +47,13 @@ public class PlayerMovement : MonoBehaviour
 
 
         // Actualizar la posición del jugador
+        if (sliderWalk.GetComponent<SliderWalk>().isRotating)
+        {
             Move();
+        }
 
         //rota al juagdor
-        if(sliderRotation.GetComponent<RectTransform>().eulerAngles.z != transform.rotation.eulerAngles.y)
+        if (sliderRotation.GetComponent<RectTransform>().eulerAngles.z != transform.rotation.eulerAngles.y)
         {
             Rotate((int)sliderRotation.GetComponent<Transform>().eulerAngles.z);
         }
