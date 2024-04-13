@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: e1736f753fb79504fb9f5a08c728a071
+guid: eb4b01263a1c55d4bac5b4cfec47ce5f
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_ArbolH
+    second: {fileID: 7847296651273183923, guid: e0153b2ff594fb9408a5c3fd6fb3b1bd, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

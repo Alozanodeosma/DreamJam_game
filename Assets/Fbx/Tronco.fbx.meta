@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: 8b4ab342cd3a5ff4c9090f7a30e3aa14
+guid: ed7ff995609cd7141a929483e7efa7b6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_TCaido
+    second: {fileID: 2100000, guid: e91c9f01bd6eaae4f90e3048785f55c5, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
