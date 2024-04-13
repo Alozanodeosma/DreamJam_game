@@ -37,6 +37,10 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
+        if(GetComponent<Rigidbody>().velocity.magnitude < 0.05f)
+        {
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
+        }
 
 
     }

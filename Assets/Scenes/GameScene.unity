@@ -15266,12 +15266,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1179429288587965179, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1179429288587965179, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
       propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1179429288587965179, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
+      propertyPath: m_ImplicitTensor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1179429288587965179, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
       propertyPath: m_CollisionDetection
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5421351559190344432, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
       propertyPath: m_LocalPosition.x
