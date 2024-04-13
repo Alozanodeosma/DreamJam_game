@@ -8,7 +8,8 @@ public class PlayerMovement : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private GameObject player;
-    [SerializeField] private Slider slider;
+        //[SerializeField] private Slider slider;
+    [SerializeField] private GameObject sliderRotation;
     private Rigidbody rb;
 
 
@@ -37,9 +38,9 @@ public class PlayerMovement : MonoBehaviour
         transform.position += moveDirection * speed * Time.deltaTime;
 
         //rota al juagdor
-        if((int)slider.value != transform.rotation.eulerAngles.y && transform.rotation.eulerAngles.y!=0)
+        if(sliderRotation.GetComponent<RectTransform>().eulerAngles.z != transform.rotation.eulerAngles.y)
         {
-            Rotate((int)slider.value);
+            Rotate((int)sliderRotation.GetComponent<Transform>().eulerAngles.z);
         }
     }
 

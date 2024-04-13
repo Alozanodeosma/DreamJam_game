@@ -1,10 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class SliderMovement : MonoBehaviour, IPointerDownHandler, IDragHandler
+public class Prueba : MonoBehaviour,IPointerDownHandler,IDragHandler
 {
     private Camera camera;
     private Vector3 screenPosition;
