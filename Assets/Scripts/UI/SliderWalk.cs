@@ -35,6 +35,7 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEnd
 
     void IEndDragHandler.OnEndDrag(PointerEventData eventData)
     {
+        angleOffset = 0;
         if (this.transform.eulerAngles.z != 0)
         {
             //rotate slowly to 0 deegres
