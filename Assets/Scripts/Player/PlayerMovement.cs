@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     public float speed = 5f; // Velocidad del jugador
-    private Vector3 moveDirection; // Dirección del movimiento
+    public Vector3 moveDirection; // Dirección del movimiento
     void Start()
     {
         rb = player.GetComponent<Rigidbody>();
@@ -31,8 +31,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Definir la dirección hacia el eje -Z (local)
         //get the current direction of the player
-        moveDirection = transform.forward;
-
+       
 
         // Actualizar la posición del jugador
         transform.position += moveDirection * speed * Time.deltaTime;

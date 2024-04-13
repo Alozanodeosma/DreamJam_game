@@ -5,12 +5,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerExitHandler
+public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndDragHandler
 {
     private Camera camera;
     private Vector3 screenPosition;
     private float angleOffset;
     [SerializeField] private GameObject slider;
+    [SerializeField] private GameObject player;
     const int y_rotation = 0;
     void Start()
         {
@@ -21,16 +22,18 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoi
         screenPosition = camera.WorldToScreenPoint(transform.position); //transforma la posición del objeto de la posición en el mundo virtual a una posición en la pantalla
         Vector3 vec3 = Input.mousePosition - screenPosition;
         angleOffset = (Mathf.Atan2(transform.right.y, transform.right.x) - Mathf.Atan2(vec3.y, vec3.x)) * Mathf.Rad2Deg;//calcula el ángulo entre el objeto y el ratón
+        
     }
     void IDragHandler.OnDrag(UnityEngine.EventSystems.PointerEventData eventData)
     {
-
+        
         Vector3 vec3 = Input.mousePosition - screenPosition;
         float angle = Mathf.Atan2(vec3.y, vec3.x) * Mathf.Rad2Deg;
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, angle + angleOffset);
+        
     }
 
-    void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
+    void IEndDragHandler.OnEndDrag(PointerEventData eventData)
     {
         if (this.transform.eulerAngles.z != 0)
         {
@@ -49,10 +52,15 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoi
 
     private IEnumerator RotateToZero()
     {
-        while (this.transform.eulerAngles.z != 0)
+        while (this.transform.eulerAngles.z <= -5 || this.transform.eulerAngles.z >= 5)
         {
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z - 1);
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 4);
+            player.GetComponent<PlayerMovement>().moveDirection = player.transform.forward;
             yield return new WaitForSeconds(0.1f);
+
         }
+            player.GetComponent<PlayerMovement>().moveDirection = Vector3.zero;
+
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0);
     }
 }
