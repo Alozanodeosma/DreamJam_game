@@ -28,6 +28,7 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEnd
     {
         //if (lastPos == currentPos)
         //{
+            angleOffset = 0;
 
             screenPosition = camera.WorldToScreenPoint(transform.position); //transforma la posición del objeto de la posición en el mundo virtual a una posición en la pantalla
             Vector3 vec3 = Input.mousePosition - screenPosition;
@@ -44,13 +45,13 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEnd
             Vector3 vec3 = Input.mousePosition - screenPosition;
             float angle = Mathf.Atan2(vec3.y, vec3.x) * Mathf.Rad2Deg;
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, angle + angleOffset);
+
         //}
-        
+
     }
 
     void IEndDragHandler.OnEndDrag(PointerEventData eventData)
     {
-        angleOffset = 0;
         if (this.transform.eulerAngles.z != 0)
         {
             //rotate slowly to 0 deegres

@@ -24,17 +24,31 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(GetComponent<Collider>() != null)
+        {
+            //active gravity
+            rb.useGravity = true;
+        }
+        else
+        {
+            rb.useGravity = true;          
+        }
+        if (GetComponent<Collider>().CompareTag("Wall"))
+        {
+            return;
+        }
+
+
     }
 
     void FixedUpdate()
     {
         // Definir la dirección hacia el eje -Z (local)
         //get the current direction of the player
-       
+
 
         // Actualizar la posición del jugador
-        transform.position += moveDirection * speed * Time.deltaTime;
+            Move();
 
         //rota al juagdor
         if(sliderRotation.GetComponent<RectTransform>().eulerAngles.z != transform.rotation.eulerAngles.y)
@@ -42,7 +56,11 @@ public class PlayerMovement : MonoBehaviour
             Rotate((int)sliderRotation.GetComponent<Transform>().eulerAngles.z);
         }
     }
-
+    public void Move()
+    {
+        //transform.position += moveDirection * speed * Time.deltaTime;
+        GetComponent<Rigidbody>().MovePosition(transform.position + moveDirection * speed * Time.deltaTime);
+    }
     public void Rotate(int y)
     {
         Vector3 rotation = new Vector3(0.0f, y, 0.0f);

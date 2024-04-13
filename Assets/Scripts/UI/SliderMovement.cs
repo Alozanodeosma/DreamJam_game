@@ -38,7 +38,9 @@ public class SliderMovement : MonoBehaviour, IPointerDownHandler, IDragHandler
         //{
             Vector3 vec3 = Input.mousePosition - screenPosition;
             float angle = Mathf.Atan2(vec3.y, vec3.x) * Mathf.Rad2Deg;
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, angle + angleOffset);
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, angle /*+ angleOffset*/);
+            angleOffset = 0;
+
         //}
     }
 }
