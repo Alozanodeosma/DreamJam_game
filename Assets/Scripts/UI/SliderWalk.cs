@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler, IEndDragHandler
+public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerExitHandler
 {
     private Camera camera;
     private Vector3 screenPosition;
@@ -12,7 +13,7 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoi
     [SerializeField] private GameObject slider;
     const int y_rotation = 0;
     void Start()
-    {
+        {
         camera = Camera.main;
     }
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
@@ -29,4 +30,29 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoi
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, angle + angleOffset);
     }
 
+    void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
+    {
+        if (this.transform.eulerAngles.z != 0)
+        {
+            //rotate slowly to 0 deegres
+            StartCoroutine(RotateToZero());
+        }
+    }
+    //void IEndDragHandler.OnEndDrag(UnityEngine.EventSystems.PointerEventData eventData)
+    //{
+    //    if (this.transform.eulerAngles.z!=0)
+    //    {
+    //        //rotate slowly to 0 deegres
+    //        StartCoroutine(RotateToZero());
+    //    }
+    //}
+
+    private IEnumerator RotateToZero()
+    {
+        while (this.transform.eulerAngles.z != 0)
+        {
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z - 1);
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
 }
