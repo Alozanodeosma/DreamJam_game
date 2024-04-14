@@ -1017,8 +1017,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e00a6f02e711ca44d90f456c334d9816, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  video: {fileID: 980824545}
-  menu: {fileID: 1841515642}
+  videoPlayer: {fileID: 980824545}
+  video: {fileID: 471671255}
+  itemToSetUnactive: {fileID: 1841515642}
+  itemToSetActive: {fileID: 1841515642}
 --- !u!1 &986671658
 GameObject:
   m_ObjectHideFlags: 0
