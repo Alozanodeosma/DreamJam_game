@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class SliderMovement : MonoBehaviour, IPointerDownHandler, IDragHandler
+public class SliderMovement : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndDragHandler
 {
     private Camera camera;
     private Vector3 screenPosition;
@@ -20,10 +20,19 @@ public class SliderMovement : MonoBehaviour, IPointerDownHandler, IDragHandler
     }
     private Vector3 lastPos;
     private Vector3 currentPos;
+    public float angularSpeed;
+    public AudioSource tik;
+    bool tikPlaying = false;
     private void FixedUpdate()
     {
         lastPos=currentPos;
         currentPos=player.transform.position;
+        //calculate the angular speed of the object in z axis
+    }
+    private void Update()
+    {
+        angularSpeed= Vector3.Angle(currentPos - lastPos, player.transform.forward) / Time.fixedDeltaTime;
+
     }
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
@@ -39,10 +48,27 @@ public class SliderMovement : MonoBehaviour, IPointerDownHandler, IDragHandler
     {
         if (sliderWalk.transform.eulerAngles.z <= 0.05f && sliderWalk.transform.eulerAngles.z >= -0.05f)
         {
+            if (!tikPlaying)
+            {
+                tik.Play();
+                tikPlaying = true;
+            }
+            //tik pitch is set to the angular speed of the object
+            tik.pitch = angularSpeed / 100;
+            //max pitch is 3
+            if (tik.pitch > 1)
+            {
+                tik.pitch = 1;
+            }
 
             Vector3 vec3 = Input.mousePosition - screenPosition;
             float angle = Mathf.Atan2(vec3.y, vec3.x) * Mathf.Rad2Deg;
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, (angle + angleOffset));
         }
     }
-}
+    void IEndDragHandler.OnEndDrag(PointerEventData eventData)
+    { 
+        tikPlaying=false;
+        tik.Stop();
+    }
+    }

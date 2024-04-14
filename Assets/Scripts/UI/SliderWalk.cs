@@ -13,6 +13,11 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEnd
     [SerializeField] private GameObject slider;
     [SerializeField] private GameObject player;
     const int y_rotation = 0;
+    public AudioSource tik;
+    public AudioSource ding;
+    public AudioSource mmmmmh;
+    public AudioSource pasos;
+    bool tikPlaying = false;
     void Start()
     {
         camera = Camera.main;
@@ -30,7 +35,6 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEnd
     void IDragHandler.OnDrag(UnityEngine.EventSystems.PointerEventData eventData)
     {
 
-
         Vector3 vec3 = Input.mousePosition - screenPosition;
         float angle = Mathf.Atan2(vec3.y, vec3.x) * Mathf.Rad2Deg;
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, angle + angleOffset);
@@ -42,9 +46,21 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEnd
         angleOffset = 0;
         if (this.transform.eulerAngles.z != 0)
         {
+            if (!tikPlaying)
+            {
+                tik.pitch = 1;
+                tik.Play();
+                mmmmmh.Play();
+                //make mmmmmh sound start gradually
+
+
+                pasos.Play();
+                tikPlaying = true;
+            }
             //rotate slowly to 0 deegres
             StartCoroutine(RotateToZero());
         }
+
     }
     //void IEndDragHandler.OnEndDrag(UnityEngine.EventSystems.PointerEventData eventData)
     //{
@@ -65,7 +81,12 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEnd
 
         }
         player.GetComponent<PlayerMovement>().moveDirection = Vector3.zero;
-
+        tik.Stop();
+        mmmmmh.Stop();
+        pasos.Stop();
+        tikPlaying = false;
+        ding.Play();
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0);
     }
+
 }
