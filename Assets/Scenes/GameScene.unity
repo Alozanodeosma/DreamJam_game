@@ -70114,7 +70114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cced547ad190254e981489dd85f7086, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  babayaga: {fileID: 7017107980674176202, guid: a2018f1581ff17b43a60f988442b7b93, type: 3}
+  babayaga: {fileID: 3975354650379664675}
 --- !u!65 &1688117376
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -90715,6 +90715,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 272593737}
+    - target: {fileID: 3350553206369607949, guid: a2018f1581ff17b43a60f988442b7b93, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7017107980674176202, guid: a2018f1581ff17b43a60f988442b7b93, type: 3}
       propertyPath: m_Name
       value: Wiwi
@@ -90768,6 +90772,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2018f1581ff17b43a60f988442b7b93, type: 3}
+--- !u!1 &3975354650379664675 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7017107980674176202, guid: a2018f1581ff17b43a60f988442b7b93, type: 3}
+  m_PrefabInstance: {fileID: 3975354650379664674}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4473977296842101376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -90866,15 +90875,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5421351559190344432, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 140.7
+      value: -14.06
       objectReference: {fileID: 0}
     - target: {fileID: 5421351559190344432, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 43.2
+      value: 62.12
       objectReference: {fileID: 0}
     - target: {fileID: 5421351559190344432, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 82.692
+      value: -58.66
       objectReference: {fileID: 0}
     - target: {fileID: 5421351559190344432, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -91260,7 +91269,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 9141987557038964491, guid: 14b69de82a5da4244a58ab9690492edf, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8304537632558022419, guid: 14b69de82a5da4244a58ab9690492edf, type: 3}
