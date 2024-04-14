@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Rotate(int y)
     {
-        Vector3 rotation = new Vector3(0.0f, y, 0.0f);
+        Vector3 rotation = new Vector3(0.0f, -y, 0.0f);
 
         transform.rotation = Quaternion.Euler(rotation);
 
