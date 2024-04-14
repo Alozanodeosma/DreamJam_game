@@ -3,55 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 
 public class StartCinematic : MonoBehaviour
 {
-    public VideoPlayer cinematicVideoPlayer;
-    public float fadeDuration = 1.0f;
-    public Image fadeImage;
+    [SerializeField] GameObject videoFinal;
+    [SerializeField] private VideoPlayer videoPlayer;
 
+    private void Start()
+    {
+        videoPlayer.loopPointReached += OnVideoEnd;
+    }
     private void OnTriggerEnter(Collider other)
     {
+
         // Check if the entering object is the player
         if (other.CompareTag("Player"))
         {
-            // Start fade out
-            if (fadeImage != null)
-            {
-                StartCoroutine(FadeOut());
-            }
-
-            // Play the cinematic video
-            if (cinematicVideoPlayer != null)
-            {
-                StartCoroutine(PlayCinematic());
-            }
-            else
-            {
-                Debug.LogError("Cinematic Video Player is not assigned!");
-            }
+            //get the player component videoFunal
+            videoPlayer.gameObject.SetActive(true);
+            videoFinal.SetActive(true);
         }
-    }
 
-    IEnumerator FadeOut()
+    }
+    void OnVideoEnd(VideoPlayer vp)
     {
-        float elapsedTime = 0.0f;
-        Color initialColor = fadeImage.color;
-        Color targetColor = new Color(initialColor.r, initialColor.g, initialColor.b, 1.0f);
-
-        while (elapsedTime < fadeDuration)
-        {
-            elapsedTime += Time.deltaTime;
-            fadeImage.color = Color.Lerp(initialColor, targetColor, elapsedTime / fadeDuration);
-            yield return null;
-        }
+        //load scene
+        SceneManager.LoadScene("MenuScene");
+        // Add your desired actions here
+        // For example, you can load the next scene or display a UI element
     }
 
-    IEnumerator PlayCinematic()
-    {
-        yield return new WaitForSeconds(fadeDuration);
-        
-        // Play the cinematic video
-        cinematicVideoPlayer.Play();
-    }
 }
