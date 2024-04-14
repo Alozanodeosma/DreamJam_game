@@ -54,12 +54,6 @@ public class SliderMovement : MonoBehaviour, IPointerDownHandler, IDragHandler, 
                 tikPlaying = true;
             }
             //tik pitch is set to the angular speed of the object
-            tik.pitch = angularSpeed / 100;
-            //max pitch is 3
-            if (tik.pitch > 1)
-            {
-                tik.pitch = 1;
-            }
 
             Vector3 vec3 = Input.mousePosition - screenPosition;
             float angle = Mathf.Atan2(vec3.y, vec3.x) * Mathf.Rad2Deg;
