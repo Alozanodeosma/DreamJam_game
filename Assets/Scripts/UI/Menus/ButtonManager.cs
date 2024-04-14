@@ -22,4 +22,8 @@ public class ButtonManager : MonoBehaviour
     {
         SceneManager.LoadScene("GameScene");
     }
+    public void DefeatToMenu()
+    {
+        SceneManager.LoadScene("MenuScene");
+    }
 }
