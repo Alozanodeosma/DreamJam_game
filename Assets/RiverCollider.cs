@@ -11,7 +11,7 @@ public class RiverCollider : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             //change scene to game over
-            SceneManager.LoadScene("DefeatScene");
+            SceneManager.LoadScene("MenuScene");
         }
     }
 }

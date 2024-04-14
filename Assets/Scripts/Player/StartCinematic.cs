@@ -50,7 +50,7 @@ public class StartCinematic : MonoBehaviour
     IEnumerator PlayCinematic()
     {
         yield return new WaitForSeconds(fadeDuration);
-
+        
         // Play the cinematic video
         cinematicVideoPlayer.Play();
     }
