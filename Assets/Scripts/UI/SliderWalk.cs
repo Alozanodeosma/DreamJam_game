@@ -39,9 +39,12 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEnd
         //float angleOffset = 0
 
     }
+    bool canDrag = false;
     void IDragHandler.OnDrag(UnityEngine.EventSystems.PointerEventData eventData)
     {
-
+        if(canDrag)
+        {
+        
         Vector3 vec3 = Input.mousePosition - screenPosition;
         float angle = Mathf.Atan2(vec3.y, vec3.x) * Mathf.Rad2Deg-90;
         if (angle > 0)
@@ -54,29 +57,41 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEnd
         }
        
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, angle - angleOffset);
+        }
 
-
+    }
+    private void Update()
+    {
+        if (transform.eulerAngles.z <= 0.05f && transform.eulerAngles.z >= -0.05f)
+        {
+            canDrag = true;
+        }
     }
 
     void IEndDragHandler.OnEndDrag(PointerEventData eventData)
     {
         angleOffset = 0;
-        if (this.transform.eulerAngles.z != 0)
+        if (canDrag)
         {
-            if (!tikPlaying)
+            if (this.transform.eulerAngles.z != 0)
             {
-                tik.pitch = 1;
-                tik.Play();
-                mmmmmh.Play();
-                //make mmmmmh sound start gradually
+                if (!tikPlaying)
+                {
+                    tik.pitch = 1;
+                    tik.Play();
+                    mmmmmh.Play();
+                    //make mmmmmh sound start gradually
 
 
-                pasos.Play();
-                tikPlaying = true;
+                    pasos.Play();
+                    tikPlaying = true;
+                }
+                //rotate slowly to 0 deegres
+                StartCoroutine(RotateToZero());
             }
-            //rotate slowly to 0 deegres
-            StartCoroutine(RotateToZero());
         }
+        canDrag = false;
+
 
     }
     public float AlwaysNeg(float number)
