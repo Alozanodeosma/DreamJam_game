@@ -9,6 +9,8 @@ public class StartCinematic : MonoBehaviour
 {
     [SerializeField] GameObject videoFinal;
     [SerializeField] private VideoPlayer videoPlayer;
+    [SerializeField] private GameObject GUI;
+    [SerializeField] private GameObject bicho;
 
     private void Start()
     {
@@ -21,6 +23,7 @@ public class StartCinematic : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //get the player component videoFunal
+
             videoPlayer.gameObject.SetActive(true);
             videoFinal.SetActive(true);
         }
