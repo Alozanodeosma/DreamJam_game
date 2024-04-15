@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndDragHandler
 {
@@ -29,15 +30,31 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEnd
         angleOffset = 0;
         screenPosition = camera.WorldToScreenPoint(transform.position); //transforma la posición del objeto de la posición en el mundo virtual a una posición en la pantalla
         Vector3 vec3 = Input.mousePosition - screenPosition;
-        angleOffset = (Mathf.Atan2(transform.right.y, transform.right.x) - Mathf.Atan2(vec3.y, vec3.x)) * Mathf.Rad2Deg;//calcula el ángulo entre el objeto y el ratón
+        //angleOffset = Mathf.Atan2(vec3.y, vec3.x) * Mathf.Rad2Deg;//calcula el ángulo entre el objeto y el ratón
+        //angleOffset = Mathf.Atan2(vec3.y, vec3.x) * Mathf.Rad2Deg - 90;
+        //if (angleOffset > 0)
+        //{
+        //    angleOffset = angleOffset - 360;
+        //}
+        //float angleOffset = 0
 
     }
     void IDragHandler.OnDrag(UnityEngine.EventSystems.PointerEventData eventData)
     {
 
         Vector3 vec3 = Input.mousePosition - screenPosition;
-        float angle = Mathf.Atan2(vec3.y, vec3.x) * Mathf.Rad2Deg;
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, angle + angleOffset);
+        float angle = Mathf.Atan2(vec3.y, vec3.x) * Mathf.Rad2Deg-90;
+        if (angle > 0)
+        {
+            angle = angle - 360;
+        }
+        if (angleOffset == 0)
+        {
+            angleOffset = angle;
+        }
+       
+        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, angle - angleOffset);
+
 
     }
 
@@ -61,6 +78,10 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEnd
             StartCoroutine(RotateToZero());
         }
 
+    }
+    public float AlwaysNeg(float number)
+    {
+        return Mathf.Abs(number) * -1f;
     }
     //void IEndDragHandler.OnEndDrag(UnityEngine.EventSystems.PointerEventData eventData)
     //{
