@@ -26,6 +26,8 @@ public class StartCinematic : MonoBehaviour
 
             videoPlayer.gameObject.SetActive(true);
             videoFinal.SetActive(true);
+            GUI.SetActive(false);
+            bicho.SetActive(false);
         }
 
     }
