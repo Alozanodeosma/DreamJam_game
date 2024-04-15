@@ -21,6 +21,9 @@ public class WiwiMovement : MonoBehaviour
 
     void Update()
     {
+        //set wiwi y level to y level of the player
+        transform.position = new Vector3(transform.position.x, player.transform.position.y, transform.position.z);
+
         // Move our position a step closer to the target.
         var step = speed * Time.deltaTime; // calculate distance to move
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, step);
