@@ -21,7 +21,7 @@ public class ButtonManager : MonoBehaviour
     }
     public void SettingsToPlay()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("GuerrillaDemo");
     }
     public void DefeatToMenu()
     {
