@@ -8,6 +8,7 @@ public class ButtonManager : MonoBehaviour
 {
     [SerializeField] private GameObject menu;
     [SerializeField] private GameObject settings;
+    [SerializeField] private GameObject Credits;
     public void MenuToSettings()
     {
         menu.SetActive(false);
@@ -20,10 +21,23 @@ public class ButtonManager : MonoBehaviour
     }
     public void SettingsToPlay()
     {
-        SceneManager.LoadScene("GameScene");
+        SceneManager.LoadScene("GuerrillaDemo");
     }
     public void DefeatToMenu()
     {
         SceneManager.LoadScene("MenuScene");
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
+
+    public void Back()
+    {
+        Credits.SetActive(false);
+    }
+    public void OpenCredits() {
+        Credits.SetActive(true);
     }
 }
