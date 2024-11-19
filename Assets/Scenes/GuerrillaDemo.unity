@@ -41281,6 +41281,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1428410753959655115, guid: 3ab613efb4b59074aa75ca530b15746d, type: 3}
   m_PrefabInstance: {fileID: 863016099}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &865285488 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3105564823153379758, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
+  m_PrefabInstance: {fileID: 4473977296842101376}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &865285489 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5177011687790675388, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
+  m_PrefabInstance: {fileID: 4473977296842101376}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &865285490 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4028768536957984571, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
+  m_PrefabInstance: {fileID: 4473977296842101376}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865285488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9f226ae8180f84439a30035d3b1ca65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &865285493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865285488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 5
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 865285490}
+          m_TargetAssemblyTypeName: SliderSoundController, Assembly-CSharp
+          m_MethodName: onHandleDrag
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &865690467
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -111987,6 +112037,34 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4028768536957984571, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
+      propertyPath: tik
+      value: 
+      objectReference: {fileID: 1036871839}
+    - target: {fileID: 4028768536957984571, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
+      propertyPath: angle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4028768536957984571, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
+      propertyPath: handle
+      value: 
+      objectReference: {fileID: 865285489}
+    - target: {fileID: 4028768536957984571, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
+      propertyPath: angleActual
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4028768536957984571, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
+      propertyPath: angleMouseUp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4028768536957984571, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
+      propertyPath: angularSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4028768536957984571, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
+      propertyPath: angleMouseDown
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4066940967574248813, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
       propertyPath: m_UiScaleMode
       value: 1
@@ -112139,6 +112217,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6302857781021343480, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6472125657724486467, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
       propertyPath: m_VertexColorAlwaysGammaSpace
       value: 1
@@ -112191,6 +112273,10 @@ PrefabInstance:
       propertyPath: sliderMovement
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8316216965615353404, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8438036106120229804, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
       propertyPath: m_Name
       value: Player
@@ -112225,6 +112311,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1635813056}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3105564823153379758, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 865285493}
     - targetCorrespondingSourceObject: {fileID: 4566978194249676694, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1036871839}

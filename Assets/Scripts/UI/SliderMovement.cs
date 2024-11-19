@@ -42,7 +42,7 @@ public class SliderMovement : MonoBehaviour, IPointerDownHandler, IDragHandler, 
     {
         //if slider rotation on z axis is not 0
         if (sliderWalk.transform.eulerAngles.z<=0.1f && sliderWalk.transform.eulerAngles.z >= -0.1f) {
-            screenPosition = camera.WorldToScreenPoint(transform.position); //transforma la posición del objeto de la posición en el mundo virtual a una posición en la pantalla
+            screenPosition = camera.WorldToScreenPoint(transform.position); //transforma la posiciï¿½n del objeto de la posiciï¿½n en el mundo virtual a una posiciï¿½n en la pantalla
             Vector3 vec3 = Input.mousePosition - screenPosition;
             angleMouseDown = (Mathf.Atan2(vec3.y, vec3.x)) * Mathf.Rad2Deg - 90;
             if (angleMouseDown > 0)
@@ -80,7 +80,7 @@ public class SliderMovement : MonoBehaviour, IPointerDownHandler, IDragHandler, 
         tik.Stop();
 
         angleMouseUp = angle;
-        posIni = posIni+ (Mathf.Abs(angleMouseDown) - Mathf.Abs(angleMouseUp));//calcula el ángulo entre el objeto y el ratón
+        posIni = posIni+ (Mathf.Abs(angleMouseDown) - Mathf.Abs(angleMouseUp));//calcula el ï¿½ngulo entre el objeto y el ratï¿½n
         Debug.Log(posIni);
 
     }
