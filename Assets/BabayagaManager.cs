@@ -12,7 +12,7 @@ public class BabayagaManager : MonoBehaviour
         {
             //iniciar condicion de derrota
             //change scene to derrota
-            SceneManager.LoadScene("MenuScene");
+            SceneManager.LoadScene("DefeatScene");
         }
     }
 }

@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 8869515156466068294}
   - component: {fileID: 7527917661453638025}
   m_Layer: 5
-  m_Name: Dropdown Audio
+  m_Name: Dropdown Resolution
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1997,7 +1997,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6152636751322906874}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4284175263119737364}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: Resume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4566978194249676694
 GameObject:
   m_ObjectHideFlags: 0
@@ -2612,6 +2624,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1310249198175968307}
   - component: {fileID: 143734237082696926}
+  - component: {fileID: 1438093596988361006}
   m_Layer: 5
   m_Name: Slider Audio
   m_TagString: Untagged
@@ -2692,6 +2705,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1438093596988361006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5958121062896802190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7157edb7ddc50374ca8510dfc6963836, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeSlider: {fileID: 143734237082696926}
 --- !u!1 &6081953448483155734
 GameObject:
   m_ObjectHideFlags: 0
@@ -2812,7 +2838,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9208287305104194023}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4284175263119737364}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: Exit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6107339140794150216
 GameObject:
   m_ObjectHideFlags: 0
@@ -3831,6 +3869,7 @@ GameObject:
   - component: {fileID: 223216498006005072}
   - component: {fileID: 1179429288587965179}
   - component: {fileID: 3177800786257108284}
+  - component: {fileID: 4284175263119737364}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3975,6 +4014,20 @@ MonoBehaviour:
   sliderRotation: {fileID: 4566978194249676694}
   speed: 5
   moveDirection: {x: 0, y: 0, z: 0}
+--- !u!114 &4284175263119737364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8438036106120229804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfa16c1ed5c5fa5428ae295e20400ea3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 5870475703568910122}
+  resolutionDropdown: {fileID: 7527917661453638025}
 --- !u!1 &8936415217360431132
 GameObject:
   m_ObjectHideFlags: 0
