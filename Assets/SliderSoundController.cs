@@ -7,6 +7,8 @@ public class SliderSoundController : MonoBehaviour {
     [SerializeField] Transform handle;
     [SerializeField] Image fill;
     Vector3 mousePos;
+    public float volume=2;
+    public float scale=3;
     public void onHandleDrag() {
         
         
@@ -20,7 +22,7 @@ public class SliderSoundController : MonoBehaviour {
             Debug.Log(angle);
             fill.fillAmount = Mathf.Abs(Mathf.Atan2(dir.y, dir.x)* Mathf.Rad2Deg)/180;
             Debug.Log(fill.fillAmount);
-            AudioListener.volume = Mathf.Round(Mathf.Pow(fill.fillAmount, 3) * 100);
+            AudioListener.volume = Mathf.Pow(fill.fillAmount, scale) * volume;
         //Debug.Log(Mathf.Abs(Mathf.Atan2(dir.y, dir.x)* Mathf.Rad2Deg)/180*100);
 
        
