@@ -30,7 +30,7 @@ public class WiwiNavIA : MonoBehaviour
         {
             //iniciar condicion de derrota
             //change scene to derrota
-            SceneManager.LoadScene("MenuScene");
+            SceneManager.LoadScene("DefeatScene");
         }
     }
 
