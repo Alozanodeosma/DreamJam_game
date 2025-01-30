@@ -16,7 +16,7 @@ public class PauseMenu : MonoBehaviour
     {
         resolutionDropdown.onValueChanged.AddListener(OnResolutionChanged);
     }
-
+ 
     // Update is called once per frame
     void Update()
     {

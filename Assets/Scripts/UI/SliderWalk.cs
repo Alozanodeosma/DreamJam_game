@@ -24,13 +24,18 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEnd
         camera = Camera.main;
     }
 
+    private void OnEnable()
+    {
+       
+    }
+
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
 
         angleOffset = 0;
-        screenPosition = camera.WorldToScreenPoint(transform.position); //transforma la posición del objeto de la posición en el mundo virtual a una posición en la pantalla
+        screenPosition = camera.WorldToScreenPoint(transform.position); //transforma la posiciï¿½n del objeto de la posiciï¿½n en el mundo virtual a una posiciï¿½n en la pantalla
         Vector3 vec3 = Input.mousePosition - screenPosition;
-        //angleOffset = Mathf.Atan2(vec3.y, vec3.x) * Mathf.Rad2Deg;//calcula el ángulo entre el objeto y el ratón
+        //angleOffset = Mathf.Atan2(vec3.y, vec3.x) * Mathf.Rad2Deg;//calcula el ï¿½ngulo entre el objeto y el ratï¿½n
         //angleOffset = Mathf.Atan2(vec3.y, vec3.x) * Mathf.Rad2Deg - 90;
         //if (angleOffset > 0)
         //{
