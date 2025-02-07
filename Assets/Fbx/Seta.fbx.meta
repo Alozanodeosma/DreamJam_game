@@ -3,12 +3,7 @@ guid: 8ad4866533ff98b4982f8474b05a4ee9
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: M_Seta
-    second: {fileID: 2100000, guid: e6222b212edf2154c99fb958b65c8856, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
