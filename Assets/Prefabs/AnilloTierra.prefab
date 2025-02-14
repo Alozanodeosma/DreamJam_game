@@ -101,7 +101,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.012882181
   m_Center: {x: 0.000098267265, y: -0.000287082, z: 0.0011361652}
@@ -206,7 +206,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.012882181
   m_Center: {x: 0.000098267265, y: -0.000287082, z: 0.0011361652}
@@ -311,7 +311,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.012882181
   m_Center: {x: 0.000098267265, y: -0.000287082, z: 0.0011361652}
@@ -416,7 +416,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.012882181
   m_Center: {x: 0.000098267265, y: -0.000287082, z: 0.0011361652}
@@ -521,7 +521,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.012882181
   m_Center: {x: 0.000098267265, y: -0.000287082, z: 0.0011361652}
@@ -626,7 +626,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.012882181
   m_Center: {x: 0.000098267265, y: -0.000287082, z: 0.0011361652}
