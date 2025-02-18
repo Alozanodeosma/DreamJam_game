@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3673271843124446178}
   - component: {fileID: 5747613197820225044}
   - component: {fileID: 3520004232947100505}
+  - component: {fileID: 619288580917681536}
   m_Layer: 0
   m_Name: SM_Estanteria
   m_TagString: Untagged
@@ -83,3 +84,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &619288580917681536
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3805249023537749369}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2, y: 11.088852, z: 2.0000002}
+  m_Center: {x: 0, y: 4.544426, z: 0}
