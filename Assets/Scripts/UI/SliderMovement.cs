@@ -12,32 +12,23 @@ public class SliderMovement : MonoBehaviour, IPointerDownHandler, IDragHandler, 
     [SerializeField] private GameObject slider;
     [SerializeField] private GameObject sliderWalk;
     [SerializeField] private GameObject player;
-    const int y_rotation = 0;
     void Start()
     {
         camera = Camera.main;
-        
     }
-    private Vector3 lastPos;
     private Vector3 currentPos;
-    public float angularSpeed;
     public AudioSource tik;
     bool tikPlaying = false;
     private void FixedUpdate()
     {
-        lastPos=currentPos;
         currentPos=player.transform.position;
         //calculate the angular speed of the object in z axis
     }
-    private void Update()
-    {
-        angularSpeed= Vector3.Angle(currentPos - lastPos, player.transform.forward) / Time.fixedDeltaTime;
 
-    }
-    public float angleActual = 0;
     public float angleMouseDown = 0;
     public float angleMouseUp = 0;
     float posIni = 0;
+    
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
         //if slider rotation on z axis is not 0
@@ -81,12 +72,6 @@ public class SliderMovement : MonoBehaviour, IPointerDownHandler, IDragHandler, 
 
         angleMouseUp = angle;
         posIni = posIni+ (Mathf.Abs(angleMouseDown) - Mathf.Abs(angleMouseUp));//calcula el �ngulo entre el objeto y el rat�n
-        Debug.Log(posIni);
 
-    }
-
-    public float AlwaysNeg(float number)
-    {
-        return Mathf.Abs(number) * -1f;
     }
     }

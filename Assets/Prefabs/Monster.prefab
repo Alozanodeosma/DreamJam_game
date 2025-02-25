@@ -6464,7 +6464,7 @@ GameObject:
   - component: {fileID: 8792526249560198774}
   - component: {fileID: 7297451014987117807}
   m_Layer: 0
-  m_Name: WiwiWithAnim 1
+  m_Name: Monster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

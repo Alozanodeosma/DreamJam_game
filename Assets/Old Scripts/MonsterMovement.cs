@@ -1,31 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
-public class WiwiMovement : MonoBehaviour
+public class MonsterMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField] private GameObject player;
-    private Rigidbody r;
-    Vector3 pos;
-    public float speed = 15.0f;
-    void Start()
-    {
-        r = player.GetComponent<Rigidbody>();
-        Vector3 pos = this.transform.position;
-
-    }
-
+    public float movementSpeed = 15.0f;
+    private float step;
     // Update is called once per frame
-
     void Update()
     {
         //set wiwi y level to y level of the player
         transform.position = new Vector3(transform.position.x, player.transform.position.y, transform.position.z);
 
         // Move our position a step closer to the target.
-        var step = speed * Time.deltaTime; // calculate distance to move
+        step = movementSpeed * Time.deltaTime; // calculate distance to move
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, step);
 
         // Check if the position of the cube and sphere are approximately equal.

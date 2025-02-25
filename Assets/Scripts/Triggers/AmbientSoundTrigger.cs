@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class onTouch : MonoBehaviour
+public class AmbientSoundTrigger : MonoBehaviour
 {
     public GameObject sonidoAmb;
     private void OnTriggerEnter(Collider other)

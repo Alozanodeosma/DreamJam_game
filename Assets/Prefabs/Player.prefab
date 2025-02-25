@@ -3496,7 +3496,6 @@ GameObject:
   - component: {fileID: 254414388615164843}
   - component: {fileID: 8594800481491426376}
   - component: {fileID: 1403414998686215598}
-  - component: {fileID: 3769183411002792906}
   m_Layer: 5
   m_Name: TextoWIWI
   m_TagString: Untagged
@@ -3620,20 +3619,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &3769183411002792906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6363164576133341127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be4ba8e930fb8e24da3968c1ea7e9727, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  letterAppearDelay: 0.1
-  babayaga: {fileID: 0}
 --- !u!1 &6609720875133505168
 GameObject:
   m_ObjectHideFlags: 0

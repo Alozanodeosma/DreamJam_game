@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
-public class WiwiNavIA : MonoBehaviour
+public class MonsterNavAI : MonoBehaviour
 {
     public GameObject player;
     private Vector3 playerPos;
