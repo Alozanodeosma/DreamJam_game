@@ -10,7 +10,7 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
        InitializeIntroText();
-       StartCoroutine(TextCoroutine.AppearText(introTextComponent, introTextSpeed, introText, true));
+       //StartCoroutine(TextCoroutine.AppearText(introTextComponent, introTextSpeed, introText, true));
     }
 
     private void InitializeIntroText()
