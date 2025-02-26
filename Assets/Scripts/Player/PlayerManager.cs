@@ -10,14 +10,14 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
        InitializeIntroText();
-       //StartCoroutine(TextCoroutine.AppearText(introTextComponent, introTextSpeed, introText, true));
+       StartCoroutine(TextCoroutine.AppearText(introTextComponent, introTextSpeed, introText, true));
     }
 
     private void InitializeIntroText()
     {
-        introText.Enqueue("Lately I've been waking up in the middle of the night with a recurring dream...");
-        introText.Enqueue("Im so... Hungry...");
-        introText.Enqueue("I'll go to heat something up in the microwave");
+        introText.Enqueue($"Lately I've been waking up in the middle of the night with a <color=red>recurring dream...</color>");
+        introText.Enqueue("Im so... <color=red>Hungry...</color>");
+        introText.Enqueue("I'll go to heat something up in the <color=red>microwave</color>");
     }
     
 }
