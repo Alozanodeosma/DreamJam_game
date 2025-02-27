@@ -2578,6 +2578,14 @@ PrefabInstance:
       propertyPath: steps
       value: 
       objectReference: {fileID: 1376539443}
+    - target: {fileID: 2376921656176869190, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
+      propertyPath: cursorClosedTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 86c76741c9bf816448cccc70384517ca, type: 3}
+    - target: {fileID: 2376921656176869190, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
+      propertyPath: cursorOpenedTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: d23480985c0a2144d851e1319481cd3c, type: 3}
     - target: {fileID: 2387629095182625113, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.27
@@ -2680,7 +2688,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5197234420907170217, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -3.4000244
+      value: -3.4001465
       objectReference: {fileID: 0}
     - target: {fileID: 5197234420907170217, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2730,6 +2738,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6457635263885887054, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6472125657724486467, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
       propertyPath: m_RenderMode
       value: 1
@@ -2758,6 +2770,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 9b66b64d2bc8e3a42a1874909d87e61c, type: 3}
+    - target: {fileID: 7383604289519824665, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7736414621040237427, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -2766,6 +2782,14 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8061527348270781286, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
+      propertyPath: cursorClosedTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: 86c76741c9bf816448cccc70384517ca, type: 3}
+    - target: {fileID: 8061527348270781286, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
+      propertyPath: cursorOpenedTexture
+      value: 
+      objectReference: {fileID: 2800000, guid: d23480985c0a2144d851e1319481cd3c, type: 3}
     - target: {fileID: 8438036106120229804, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
       propertyPath: m_Name
       value: Player
@@ -40086,6 +40110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   introTextComponent: {fileID: 952509335}
   introTextSpeed: 0.1
+  cursorTexture: {fileID: 2800000, guid: d23480985c0a2144d851e1319481cd3c, type: 3}
 --- !u!1001 &1741282725
 PrefabInstance:
   m_ObjectHideFlags: 0

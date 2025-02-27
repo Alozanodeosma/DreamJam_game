@@ -1,10 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class SliderMovement : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndDragHandler
+public class SliderMovement : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndDragHandler, IPointerExitHandler
 {
     private Camera camera;
     private Vector3 screenPosition;
@@ -12,6 +13,8 @@ public class SliderMovement : MonoBehaviour, IPointerDownHandler, IDragHandler, 
     [SerializeField] private GameObject slider;
     [SerializeField] private GameObject sliderWalk;
     [SerializeField] private GameObject player;
+    [SerializeField] private Texture2D cursorClosedTexture;
+    [SerializeField] private Texture2D cursorOpenedTexture;
     void Start()
     {
         camera = Camera.main;
@@ -32,8 +35,8 @@ public class SliderMovement : MonoBehaviour, IPointerDownHandler, IDragHandler, 
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
         //if slider rotation on z axis is not 0
-        if (sliderWalk.transform.eulerAngles.z<=0.1f && sliderWalk.transform.eulerAngles.z >= -0.1f) {
-            screenPosition = camera.WorldToScreenPoint(transform.position); //transforma la posici�n del objeto de la posici�n en el mundo virtual a una posici�n en la pantalla
+        if (SliderWalk.canDrag) {
+            screenPosition = camera.WorldToScreenPoint(transform.position); 
             Vector3 vec3 = Input.mousePosition - screenPosition;
             angleMouseDown = (Mathf.Atan2(vec3.y, vec3.x)) * Mathf.Rad2Deg - 90;
             if (angleMouseDown > 0)
@@ -42,19 +45,28 @@ public class SliderMovement : MonoBehaviour, IPointerDownHandler, IDragHandler, 
             }
             angleOffset = angleMouseDown - posIni;
         }
+        else
+        {
+            eventData.pointerDrag = null;
+        }
     }
     public float angle=0;
-
+    private bool cursorChanged = false;
     void IDragHandler.OnDrag(UnityEngine.EventSystems.PointerEventData eventData)
     {
-        if (sliderWalk.transform.eulerAngles.z <= 0.05f && sliderWalk.transform.eulerAngles.z >= -0.05f)
+        if (SliderWalk.canDrag)
         {
+            if (PlayerManager.activateCursorChange && !cursorChanged)
+            {
+                Cursor.SetCursor(cursorClosedTexture, Vector2.zero, CursorMode.Auto);
+                cursorChanged = true;
+            } 
+            
             if (!tikPlaying)
             {
                 tik.Play();
                 tikPlaying = true;
             }
-            //tik pitch is set to the angular speed of the object
             Vector3 vec3 = Input.mousePosition - screenPosition;
             angle = Mathf.Atan2(vec3.y, vec3.x) * Mathf.Rad2Deg - 90;
             if (angle > 0)
@@ -62,16 +74,40 @@ public class SliderMovement : MonoBehaviour, IPointerDownHandler, IDragHandler, 
                 angle = angle - 360;
             }
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, (angle -angleOffset  ));
-            //Debug.Log(angle);
+        }
+        else
+        {
+                eventData.pointerDrag = null;
         }
     }
     void IEndDragHandler.OnEndDrag(PointerEventData eventData)
     { 
+        if(PlayerManager.activateCursorChange){
+            Cursor.SetCursor(cursorOpenedTexture, Vector2.zero, CursorMode.Auto);
+            cursorChanged = false;
+        }
         tikPlaying=false;
         tik.Stop();
 
         angleMouseUp = angle;
-        posIni = posIni+ (Mathf.Abs(angleMouseDown) - Mathf.Abs(angleMouseUp));//calcula el �ngulo entre el objeto y el rat�n
+        posIni = posIni+ (Mathf.Abs(angleMouseDown) - Mathf.Abs(angleMouseUp));
+    }
+    
+    void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
+    {
+        if (PlayerManager.cancelDragWhenOutOfTheDial)
+        {
+            eventData.pointerDrag = null;
+            tikPlaying=false;
+            tik.Stop();
 
+            angleMouseUp = angle;
+            posIni = posIni+ (Mathf.Abs(angleMouseDown) - Mathf.Abs(angleMouseUp));
+        }
+        
+        if(PlayerManager.activateCursorChange){
+            Cursor.SetCursor(cursorOpenedTexture, Vector2.zero, CursorMode.Auto);
+            cursorChanged = false;
+        }
     }
     }

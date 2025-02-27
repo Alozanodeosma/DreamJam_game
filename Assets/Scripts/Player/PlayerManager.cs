@@ -7,9 +7,13 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private TMP_Text introTextComponent;
     [SerializeField] private float introTextSpeed;
     private Queue<string> introText = new Queue<string>() ;
+    public static bool cancelDragWhenOutOfTheDial = false;
+    public static bool activateCursorChange = false;
+    [SerializeField] private Texture2D cursorTexture;
     void Start()
     {
        InitializeIntroText();
+       if(activateCursorChange) { Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto); }
        //StartCoroutine(TextCoroutine.AppearText(introTextComponent, introTextSpeed, introText, true));
     }
 

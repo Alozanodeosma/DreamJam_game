@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 using UnityEngine.UIElements;
+using Cursor = UnityEngine.Cursor;
 
 public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEndDragHandler
 {
@@ -17,7 +18,10 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEnd
     
     [SerializeField] private GameObject slider;
     [SerializeField] private GameObject player;
-
+    [SerializeField] Texture2D cursorClosedTexture;
+    [SerializeField] Texture2D cursorOpenedTexture;
+    
+    
     public AudioSource tik;
     public AudioSource ding;
     public AudioSource mmmmmh;
@@ -37,13 +41,18 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEnd
         mousePositionInCameraCoords  = Input.mousePosition - screenPosition;
     }
     
-    bool canDrag = false;
+    public static bool canDrag = false;
+    private bool cursorChanged = false;
     void IDragHandler.OnDrag(UnityEngine.EventSystems.PointerEventData eventData)
     {
         if(canDrag)
         {
-        
-        mousePositionInCameraCoords = Input.mousePosition - screenPosition;
+            if (PlayerManager.activateCursorChange && !cursorChanged)
+            {
+                Cursor.SetCursor(cursorClosedTexture, Vector2.zero, CursorMode.Auto);
+                cursorChanged = true;
+            } 
+            mousePositionInCameraCoords = Input.mousePosition - screenPosition;
         float angle = Mathf.Atan2(mousePositionInCameraCoords.y, mousePositionInCameraCoords.x) * Mathf.Rad2Deg-90;
         if (angle > 0)
         {
@@ -68,6 +77,10 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEnd
 
     void IEndDragHandler.OnEndDrag(PointerEventData eventData)
     {
+        if(PlayerManager.activateCursorChange){
+        Cursor.SetCursor(cursorOpenedTexture, Vector2.zero, CursorMode.Auto);
+        cursorChanged = false;
+        }
         angleOffset = 0;
         if (canDrag)
         {
