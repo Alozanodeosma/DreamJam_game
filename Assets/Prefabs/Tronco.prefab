@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1561764465185787829}
   - component: {fileID: 546575876031340579}
   - component: {fileID: 8393654853099957763}
+  - component: {fileID: 4177482485531690479}
   m_Layer: 0
   m_Name: Tronco
   m_TagString: Untagged
@@ -83,3 +84,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4177482485531690479
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4782237747941140877}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.9273124, y: 2.1089559, z: 6.6788616}
+  m_Center: {x: 0.26365787, y: -0.035155416, z: 0.12312615}
