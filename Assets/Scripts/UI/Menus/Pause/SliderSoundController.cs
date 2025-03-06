@@ -26,6 +26,6 @@ public class SliderSoundController : MonoBehaviour {
         float logValue = Mathf.Log10(fillValue);
         
         
-        mixer.SetFloat("Master", logValue * volume);
+        mixer.SetFloat("MasterParam", logValue * volume);
     }
 }
