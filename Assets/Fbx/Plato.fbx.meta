@@ -3,7 +3,12 @@ guid: bb248e467275f5243aff8fd2351a09f3
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Plato
+    second: {fileID: 2100000, guid: 8f644239191788543bbf90cd8afc3c6e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
