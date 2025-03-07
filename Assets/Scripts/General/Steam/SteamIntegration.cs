@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class SteamIntegration : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
         try
@@ -19,7 +18,6 @@ public class SteamIntegration : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         Steamworks.SteamClient.RunCallbacks();
@@ -29,10 +27,14 @@ public class SteamIntegration : MonoBehaviour
     {
         Steamworks.SteamClient.Shutdown();
     }
+    
 
     private void PrintName()
     {
-        Debug.Log(Steamworks.SteamClient.Name);
-
+        Debug.Log("my name is: "+Steamworks.SteamClient.Name);
+        foreach (var friend in Steamworks.SteamFriends.GetFriends())
+        {
+            Debug.Log("my friends are: "+friend);
+        }
     }
 }
