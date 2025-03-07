@@ -33411,7 +33411,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 416033762918809668, guid: 0ec1514d875039644b4101ecf4243ed3, type: 3}
       propertyPath: m_Name
-      value: Farola
+      value: Farola Roja
       objectReference: {fileID: 0}
     - target: {fileID: 6545667225865715850, guid: 0ec1514d875039644b4101ecf4243ed3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -33440,13 +33440,38 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 416033762918809668, guid: 0ec1514d875039644b4101ecf4243ed3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2147423922}
   m_SourcePrefab: {fileID: 100100000, guid: 0ec1514d875039644b4101ecf4243ed3, type: 3}
 --- !u!4 &2147423920 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 161429159272277500, guid: 0ec1514d875039644b4101ecf4243ed3, type: 3}
   m_PrefabInstance: {fileID: 2147423919}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2147423921 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 416033762918809668, guid: 0ec1514d875039644b4101ecf4243ed3, type: 3}
+  m_PrefabInstance: {fileID: 2147423919}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2147423922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2147423921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 573dd1f60d39e60488f9ee0f456531e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minBlinkInterval: 0.1
+  maxBlinkInterval: 0.2
+  minFlickerIntensity: 0.5
+  maxFlickerIntensity: 1
+  flickerChance: 0.2
 --- !u!1001 &3712137219145963646
 PrefabInstance:
   m_ObjectHideFlags: 0
