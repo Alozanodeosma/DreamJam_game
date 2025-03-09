@@ -1,7 +1,7 @@
 using System;
 using Steamworks;
 using Steamworks.Data;
-using Unity.Android.Gradle.Manifest;
+//using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 
 namespace General.Steam

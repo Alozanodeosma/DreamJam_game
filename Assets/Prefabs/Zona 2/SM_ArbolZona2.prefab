@@ -71,6 +71,7 @@ GameObject:
   - component: {fileID: 1762104648219606951}
   - component: {fileID: 2384824659623944204}
   - component: {fileID: 4229647701846652506}
+  - component: {fileID: 9092142358793736837}
   m_Layer: 0
   m_Name: SM_ArbolZona2
   m_TagString: Untagged
@@ -143,3 +144,26 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &9092142358793736837
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3390099223322220085}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.2926452
+  m_Height: 19.457281
+  m_Direction: 1
+  m_Center: {x: 0, y: 6.9242506, z: 0}
