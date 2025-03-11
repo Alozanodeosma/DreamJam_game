@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1489843866999641526}
   - component: {fileID: 6848006416189998177}
-  - component: {fileID: 2537547550524981291}
   m_Layer: 7
   m_Name: Arbol
   m_TagString: Untagged
@@ -59,28 +58,12 @@ LODGroup:
     renderers:
     - renderer: {fileID: 4122044904944330755}
     - renderer: {fileID: 7627277000509741767}
-  - screenRelativeHeight: 0.1
+  - screenRelativeHeight: 0.101
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 4122044904944330755}
     - renderer: {fileID: 7627277000509741767}
   m_Enabled: 1
---- !u!208 &2537547550524981291
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222515757966457390}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 1.8180001, y: 3.0340002, z: 2.1260002}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0.238, y: 1.64, z: 0.16700001}
-  m_TimeToStationary: 0.5
 --- !u!1 &3156887639174980089
 GameObject:
   m_ObjectHideFlags: 0

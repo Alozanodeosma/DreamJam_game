@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2806229768082004004}
   - component: {fileID: 1127045275904264113}
-  - component: {fileID: 3201274120767638384}
   m_Layer: 0
   m_Name: SM_ArbolZona2
   m_TagString: Untagged
@@ -56,27 +55,11 @@ LODGroup:
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 4229647701846652506}
-  - screenRelativeHeight: 0.1
+  - screenRelativeHeight: 0.0546
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 4229647701846652506}
   m_Enabled: 1
---- !u!208 &3201274120767638384
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 433935047965394438}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 2.2930002, y: 8.38, z: 2.2930002}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 4.13, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1 &3390099223322220085
 GameObject:
   m_ObjectHideFlags: 0
