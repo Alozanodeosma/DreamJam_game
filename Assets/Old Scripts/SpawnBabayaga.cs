@@ -12,6 +12,7 @@ public class SpawnBabayaga : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             //spawn babayaga
+            babayaga.SetActive(true);
             textBabayaga.SetActive(true);
             gameObject.SetActive(false);
 
