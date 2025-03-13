@@ -14,12 +14,12 @@ public class PlayerManager : MonoBehaviour
     {
        InitializeIntroText();
        if(activateCursorChange) { Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto); }
-       StartCoroutine(TextCoroutine.AppearText(introTextComponent, introTextSpeed, introText, true));
+       //StartCoroutine(TextCoroutine.AppearText(introTextComponent, introTextSpeed, introText, true));
     }
 
     private void InitializeIntroText()
     {
-        introText.Enqueue($"Lately, I’ve been waking up in the dead of night, haunted by the same <color=red>recurring dream...</color>");
+        introText.Enqueue($"Lately, Iï¿½ve been waking up in the dead of night, haunted by the same <color=red>recurring dream...</color>");
         introText.Enqueue("Im so... <color=red>Hungry...</color>");
         introText.Enqueue("I'll heat something up in the <color=red>microwave.</color>");
     }

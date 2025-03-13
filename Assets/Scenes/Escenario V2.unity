@@ -5979,6 +5979,14 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5013416715869631004, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5013416715869631004, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1b3e1db7acc34a346ac56e2ece2f5ed6, type: 3}
     - target: {fileID: 5421351559190344432, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -112.9
