@@ -8,7 +8,8 @@ public static class TextCoroutine
 {
     private static GameObject panel;
     private static bool showingText = false;
-
+    private static bool panelCreated = false;
+    
     public static IEnumerator AppearText(TMP_Text textComponent, float letterAppearDelay, Queue<string> textToShow,
         bool activeBlackPannel = false)
     {
@@ -21,10 +22,10 @@ public static class TextCoroutine
             {
                 showingText = true;
 
-                if (activeBlackPannel)
+                if (!panelCreated && activeBlackPannel)
                 {
                     panel = CreateBlackPannel(textComponent);
-                    activeBlackPannel = false;
+                    panelCreated = true;
                 }
 
                 textComponent.maxVisibleCharacters = 0;
@@ -45,12 +46,32 @@ public static class TextCoroutine
         for (float i = 1; i >= 0; i -= 0.01f)
         {
             textComponent.color = new Color(0.8490566f, 0.7675287f, 0.7080812f, i);
-            if (panel != null) panel.GetComponent<Image>().color = new Color(0, 0, 0, i);
-            if (panel.GetComponent<Image>().color == new Color(0, 0, 0, 0)) GameObject.Destroy(panel);
+            if(activeBlackPannel){
+                if (panel != null) panel.GetComponent<Image>().color = new Color(0, 0, 0, i);
+                if (panel.GetComponent<Image>().color == new Color(0, 0, 0, 0)) GameObject.Destroy(panel);
+            }
+
+            CheckForSetActiveSkipButton();
+            if (CheckForSkipButton())
+            {
+                GameObject skipButton = GameObject.Find("SkipButtonText");
+                if (skipButton != null) skipButton.GetComponent<TextMeshProUGUI>().color = new Color(0, 0, 0, i);
+                if (skipButton.GetComponent<TextMeshProUGUI>().color == new Color(0, 0, 0, 0)) GameObject.Destroy(GameObject.Find("SkipButton"));
+            }
             yield return new WaitForSeconds(0.01f);
         }
+
+
     }
 
+    private static void CheckForSetActiveSkipButton()
+    {
+        if(GameObject.Find("SetActiveSkipButton")!=null) GameObject.Find("SetActiveSkipButton").SetActive(false);
+    }
+    private static bool CheckForSkipButton()
+    {
+        return GameObject.Find("SkipButton") != null;
+    }
     private static GameObject CreateBlackPannel(TMP_Text textComponent)
     {
         GameObject panel = new GameObject("Panel");
@@ -67,7 +88,7 @@ public static class TextCoroutine
     {
         textComponent.enableAutoSizing = true;
         textComponent.fontSizeMin = 5f;
-        textComponent.fontSizeMax = 20f;
+        textComponent.fontSizeMax = 40f;
         textComponent.text = originalText;
         textComponent.ForceMeshUpdate();
         

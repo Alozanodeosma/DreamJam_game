@@ -26,7 +26,7 @@ public class MonsterNavAI : MonoBehaviour
         playerPos = player.transform.position;
         agent.destination = playerPos;
 
-        print(agent.remainingDistance);
+        //print(agent.remainingDistance);
 
         if (agent.remainingDistance > 100)
         {
