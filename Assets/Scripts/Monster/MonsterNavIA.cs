@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Steamworks.Data;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
@@ -42,8 +43,7 @@ public class MonsterNavAI : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            //iniciar condicion de derrota
-            //change scene to derrota
+            SteamAchievementsManager.UnlockAchievement(SteamAchievementsManager.archDeath);
             SceneManager.LoadScene("DefeatScene");
         }
     }

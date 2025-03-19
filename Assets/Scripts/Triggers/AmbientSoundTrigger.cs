@@ -11,6 +11,7 @@ public class AmbientSoundTrigger : MonoBehaviour
         {
             //make the sonidoAmb audio source component volume 1
             sonidoAmb.GetComponent<AudioSource>().volume = 1;
+            sonidoAmb.GetComponent<AudioSource>().ignoreListenerPause = true;
             this.gameObject.SetActive(false);
         }
     }

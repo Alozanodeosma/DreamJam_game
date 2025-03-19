@@ -15,6 +15,7 @@ public class SliderMovement : MonoBehaviour, IPointerDownHandler, IDragHandler, 
     [SerializeField] private GameObject player;
     [SerializeField] private Texture2D cursorClosedTexture;
     [SerializeField] private Texture2D cursorOpenedTexture;
+    public static bool paused = false;
     void Start()
     {
         camera = Camera.main;
@@ -82,7 +83,8 @@ public class SliderMovement : MonoBehaviour, IPointerDownHandler, IDragHandler, 
                previousAngle = currentAngle;
                tik.Play();
             }
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, (angle -angleOffset  ));
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, (angle -angleOffset));
+            if(paused){eventData.pointerDrag = null;}
         }
         else
         {
@@ -114,4 +116,7 @@ public class SliderMovement : MonoBehaviour, IPointerDownHandler, IDragHandler, 
             cursorChanged = false;
         }
     }
+
+  
+    
     }

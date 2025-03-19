@@ -12,6 +12,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     private static bool paused = false;
     public TMP_Dropdown resolutionDropdown;
+    
     void Start()
     {
         resolutionDropdown.onValueChanged.AddListener(OnResolutionChanged);
@@ -22,26 +23,40 @@ public class PauseMenu : MonoBehaviour
     {
         if(Input.GetKeyUp(KeyCode.Escape))
         {
-            if(!pauseMenu.activeInHierarchy){
-            Time.timeScale = 0;
-            pauseMenu.SetActive(true);
-            }
-            else
-            {
-                Time.timeScale = 1;
-                pauseMenu.SetActive(false);
-            }
+            Pause();
         }
     }
 
+    public void Pause()
+    {
+        if(!pauseMenu.activeInHierarchy){
+            Time.timeScale = 0;
+            AudioListener.pause = true;
+            SliderMovement.paused = true;
+            SliderWalk.paused = true;
+            pauseMenu.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = 1;
+            AudioListener.pause = false;
+            SliderMovement.paused = false;
+            SliderWalk.paused = false;
+            pauseMenu.SetActive(false);
+        }
+    }
     public void Resume()
     {
         Time.timeScale = 1;
+        SliderMovement.paused = false;
+        SliderWalk.paused = false;
         pauseMenu.SetActive(false);
     }
     
     public void Exit()
     {
+        SliderMovement.paused = false;
+        SliderWalk.paused = false;
         SceneManager.LoadScene("MenuScene");
     }
     private void OnResolutionChanged(int index)

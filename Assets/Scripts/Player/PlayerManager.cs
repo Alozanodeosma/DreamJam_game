@@ -16,11 +16,12 @@ public class PlayerManager : MonoBehaviour
     
     [SerializeField] private GameObject SkipButton;
     [SerializeField] private GameObject ShowSkipButton;
+    
     void Start()
     {
        InitializeIntroText();
        if(activateCursorChange) { Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto); }
-       StartCoroutine(TextCoroutine.AppearText(introTextComponent, introTextSpeed, introText, true));
+       //StartCoroutine(TextCoroutine.AppearText(introTextComponent, introTextSpeed, introText, true));
        
     }
 

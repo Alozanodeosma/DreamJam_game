@@ -34,6 +34,7 @@ public class StartCinematic : MonoBehaviour
     void OnVideoEnd(VideoPlayer vp)
     {
         //load scene
+        SteamAchievementsManager.UnlockAchievement(SteamAchievementsManager.archWin);
         SceneManager.LoadScene("MenuScene");
         // Add your desired actions here
         // For example, you can load the next scene or display a UI element

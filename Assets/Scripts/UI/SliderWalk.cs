@@ -43,6 +43,7 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEnd
     
     public static bool canDrag = false;
     private bool cursorChanged = false;
+    public static bool paused= false;
     void IDragHandler.OnDrag(UnityEngine.EventSystems.PointerEventData eventData)
     {
         if(canDrag)
@@ -64,6 +65,7 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEnd
         }
        
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, angle - angleOffset);
+        if(paused){eventData.pointerDrag = null;StartCoroutine(RotateToZero());}
         }
 
     }
@@ -86,14 +88,7 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEnd
         {
             if (this.transform.eulerAngles.z != 0)
             {
-                if (!tikPlaying)
-                {
-                    tik.pitch = 1;
-                    tik.Play();
-                    mmmmmh.Play();
-                    steps.Play();
-                    tikPlaying = true;
-                }
+                
                 //rotate slowly to 0 deegres
                 StartCoroutine(RotateToZero());
             }
@@ -102,6 +97,15 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEnd
     }
     private IEnumerator RotateToZero()
     {
+        if (!tikPlaying)
+        {
+            tik.pitch = 1;
+            tik.Play();
+            mmmmmh.Play();
+            steps.Play();
+            tikPlaying = true;
+        }
+        
         while (this.transform.eulerAngles.z <= -5 || this.transform.eulerAngles.z >= 5)
         {
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z + 4);
