@@ -3,7 +3,12 @@ guid: c5dbf1858dab49c49838b1df36d17bb9
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Babayaga
+    second: {fileID: 2100000, guid: 649881b2d4a2e1e42877631db2c75d15, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Blinkinglight : MonoBehaviour
+public class BlinkingAdelanto : MonoBehaviour
 {
     private Light myLight;
     private float baseIntensity;
@@ -11,12 +11,15 @@ public class Blinkinglight : MonoBehaviour
     private Material objectMaterial;
     private Color baseEmissionColor;
 
+    public GameObject[] wiwis;
+    
+    public bool wiwiTrigger = false;
 
     [Header("Blink Settings")]
     public float minBlinkInterval = 0.05f;
     public float maxBlinkInterval = 0.2f;
-    public float minFlickerIntensity = 0.3f;
-    public float maxFlickerIntensity = 0.5f;
+    public float minFlickerIntensity = 0f;
+    public float maxFlickerIntensity = 0f;
     [Range(0f, 1f)]
     public float flickerChance = 0.2f;
 
@@ -48,6 +51,16 @@ public class Blinkinglight : MonoBehaviour
 
             if (Random.value < flickerChance)
             {
+                
+                if (wiwiTrigger == true)
+                {
+                    
+
+                        wiwis[Random.Range(0, wiwis.Length)].SetActive(true);
+                    
+                    
+                }
+              
                 // Flicker light intensity
                 myLight.intensity = Random.Range(minFlickerIntensity, maxFlickerIntensity);
 
@@ -56,6 +69,11 @@ public class Blinkinglight : MonoBehaviour
             }
             else
             {
+                for (int i = 0; i < wiwis.Length; i++)
+                {
+                    wiwis[i].SetActive(false);
+                }
+                
                 // Restore light intensity
                 myLight.intensity = baseIntensity;
 
