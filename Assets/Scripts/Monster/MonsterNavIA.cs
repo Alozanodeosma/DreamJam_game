@@ -10,31 +10,36 @@ public class MonsterNavAI : MonoBehaviour
     public GameObject player;
     private Vector3 playerPos;
     private NavMeshAgent agent;
-    private float startWiwiSpeed;
+    public float startWiwiSpeed;
+    public float wiwiSprintSpeed;
+    public float innerRange;
+    public float outerRange;
     public float distance;
 
     // Start is called before the first frame update
     void Start()
     {
         agent= GetComponent<NavMeshAgent>();
-        startWiwiSpeed = agent.speed;
+        agent.speed = startWiwiSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        distance = agent.remainingDistance;
         playerPos = player.transform.position;
         agent.destination = playerPos;
+        distance = Vector3.Distance(playerPos, agent.transform.position);
 
-        //print(agent.remainingDistance);
-
-        if (agent.remainingDistance > 100)
+        //esto se podria haber hecho bien, con las cosas de IA
+        if (distance > outerRange)
         {
-            agent.speed = startWiwiSpeed*2;
-        } else if (agent.remainingDistance < 75)
+            agent.speed = wiwiSprintSpeed;
+            //print("sprint: " + agent.speed);
+        }
+        else if (distance < innerRange)
         {
             agent.speed = startWiwiSpeed;
+            //print("andar: " + agent.speed);
         }
     }
 

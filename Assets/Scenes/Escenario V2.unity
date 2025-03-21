@@ -46589,6 +46589,22 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1718500679}
+    - target: {fileID: 7297451014987117807, guid: 1ba626bcd97b8b64d9a202608db4a2f1, type: 3}
+      propertyPath: innerRange
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7297451014987117807, guid: 1ba626bcd97b8b64d9a202608db4a2f1, type: 3}
+      propertyPath: outerRange
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7297451014987117807, guid: 1ba626bcd97b8b64d9a202608db4a2f1, type: 3}
+      propertyPath: startWiwiSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7297451014987117807, guid: 1ba626bcd97b8b64d9a202608db4a2f1, type: 3}
+      propertyPath: wiwiSprintSpeed
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8792526249560198774, guid: 1ba626bcd97b8b64d9a202608db4a2f1, type: 3}
       propertyPath: m_Height
       value: 10.11
