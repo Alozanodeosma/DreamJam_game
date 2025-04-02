@@ -32,7 +32,8 @@ public class SliderMovement : MonoBehaviour, IPointerDownHandler, IDragHandler, 
     public float angleMouseDown = 0;
     public float angleMouseUp = 0;
     float posIni = 0;
-    
+    private bool getFirstAngleForTurnAchievement = true;
+
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
         //if slider rotation on z axis is not 0
@@ -45,6 +46,7 @@ public class SliderMovement : MonoBehaviour, IPointerDownHandler, IDragHandler, 
                 angleMouseDown =  angleMouseDown-360;
             }
             angleOffset = angleMouseDown - posIni;
+            getFirstAngleForTurnAchievement = true;
         }
         else
         {
@@ -53,7 +55,13 @@ public class SliderMovement : MonoBehaviour, IPointerDownHandler, IDragHandler, 
     }
     public float angle=0;
     private int previousAngle = 0;
-    private int currentAngle = 0;
+    private int currentAngleAudio = 0;
+    private float currentAngle = 0;
+    private int currentAngleInt = 0;
+    private int startingAngle;
+    private int turnsCounter = 0;
+    private int previousAngleInt = 0;
+    
     void IDragHandler.OnDrag(UnityEngine.EventSystems.PointerEventData eventData)
     {
         if (SliderWalk.canDrag)
@@ -64,15 +72,22 @@ public class SliderMovement : MonoBehaviour, IPointerDownHandler, IDragHandler, 
             {
                 angle = angle - 360;
             }
+            currentAngle = angle-angleOffset;
+            currentAngleInt = (int)currentAngle;
+            
+            if(!achievementTurnCompleted){
+            SteamTurnAchievement();
+            }
+            
             
             //make the tik sound
-            currentAngle = (int)(angle/15);
-            if (currentAngle != previousAngle && !tik.isPlaying)
+            currentAngleAudio = (int)(angle/15);
+            if (currentAngleAudio != previousAngle && !tik.isPlaying)
             {
-               previousAngle = currentAngle;
+               previousAngle = currentAngleAudio;
                tik.Play();
             }
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, (angle -angleOffset));
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, (currentAngle));
             if(paused){eventData.pointerDrag = null;}
         }
         else
@@ -96,6 +111,31 @@ public class SliderMovement : MonoBehaviour, IPointerDownHandler, IDragHandler, 
         }
     }
 
+    private int firstAngle = 0;
+    private bool achievementTurnCompleted = false;
+    public void SteamTurnAchievement()
+    {
+        if (getFirstAngleForTurnAchievement)
+        {
+            firstAngle = currentAngleInt/10;
+            turnsCounter=0;
+            getFirstAngleForTurnAchievement = false;
+        }
+            //steam achievement
+            if (currentAngleInt/10 == firstAngle && currentAngleInt/10 != previousAngleInt/10)
+            {
+                if (previousAngleInt < currentAngleInt) turnsCounter++;
+                else turnsCounter--;
+                Debug.Log(turnsCounter);
+            }
+            previousAngleInt = currentAngleInt;
+            if (turnsCounter == 3 || turnsCounter == -3)
+            {
+                SteamAchievementsManager.UnlockAchievement(SteamAchievementsManager.archRotate);
+                achievementTurnCompleted = true;
+                
+            }
+    }
   
     
     }
