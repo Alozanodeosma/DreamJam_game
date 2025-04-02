@@ -52,31 +52,20 @@ public class SliderMovement : MonoBehaviour, IPointerDownHandler, IDragHandler, 
         }
     }
     public float angle=0;
-    private bool cursorChanged = false;
     private int previousAngle = 0;
     private int currentAngle = 0;
     void IDragHandler.OnDrag(UnityEngine.EventSystems.PointerEventData eventData)
     {
         if (SliderWalk.canDrag)
         {
-            if (PlayerManager.activateCursorChange && !cursorChanged)
-            {
-                Cursor.SetCursor(cursorClosedTexture, Vector2.zero, CursorMode.Auto);
-                cursorChanged = true;
-            } 
-            
-            // if (!tikPlaying)
-            // {
-            //     tik.Play();
-            //     tikPlaying = true;
-            // }
-            Vector3 vec3 = Input.mousePosition - screenPosition;
-            angle = Mathf.Atan2(vec3.y, vec3.x) * Mathf.Rad2Deg - 90;
+            Vector3 mousePositionInDial = Input.mousePosition - screenPosition;
+            angle = Mathf.Atan2(mousePositionInDial.y, mousePositionInDial.x) * Mathf.Rad2Deg - 90;
             if (angle > 0)
             {
                 angle = angle - 360;
             }
             
+            //make the tik sound
             currentAngle = (int)(angle/15);
             if (currentAngle != previousAngle && !tik.isPlaying)
             {
@@ -93,10 +82,6 @@ public class SliderMovement : MonoBehaviour, IPointerDownHandler, IDragHandler, 
     }
     void IEndDragHandler.OnEndDrag(PointerEventData eventData)
     { 
-        if(PlayerManager.activateCursorChange){
-            Cursor.SetCursor(cursorOpenedTexture, Vector2.zero, CursorMode.Auto);
-            cursorChanged = false;
-        }
         angleMouseUp = angle;
         posIni = posIni+ (Mathf.Abs(angleMouseDown) - Mathf.Abs(angleMouseUp));
     }
@@ -106,14 +91,8 @@ public class SliderMovement : MonoBehaviour, IPointerDownHandler, IDragHandler, 
         if (PlayerManager.cancelDragWhenOutOfTheDial)
         {
             eventData.pointerDrag = null;
-
             angleMouseUp = angle;
             posIni = posIni+ (Mathf.Abs(angleMouseDown) - Mathf.Abs(angleMouseUp));
-        }
-        
-        if(PlayerManager.activateCursorChange){
-            Cursor.SetCursor(cursorOpenedTexture, Vector2.zero, CursorMode.Auto);
-            cursorChanged = false;
         }
     }
 

@@ -11,7 +11,6 @@ public class PlayerManager : MonoBehaviour
     private Queue<string> introText = new Queue<string>() ;
     public static bool cancelDragWhenOutOfTheDial = false;
     public static bool activateCursorChange = false;
-    [SerializeField] private Texture2D cursorTexture;
     
     
     [SerializeField] private GameObject SkipButton;
@@ -20,7 +19,6 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
        InitializeIntroText();
-       if(activateCursorChange) { Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto); }
        StartCoroutine(TextCoroutine.AppearText(introTextComponent, introTextSpeed, introText, true));
        
     }

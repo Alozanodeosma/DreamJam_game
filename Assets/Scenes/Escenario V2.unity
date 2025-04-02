@@ -7353,6 +7353,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6472125657724486467, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6472125657724486467, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
+      propertyPath: m_PixelPerfect
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6487305721047702394, guid: 9586f42ae288dc94eb293549d3a888fd, type: 3}
       propertyPath: m_text
       value: 
@@ -24534,6 +24542,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2729274159410300410, guid: 2eb6b1046b52f9446bf62370fb5f4902, type: 3}
+      propertyPath: m_DragThreshold
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5456023234240451334, guid: 2eb6b1046b52f9446bf62370fb5f4902, type: 3}
       propertyPath: m_Name
       value: EventSystem
