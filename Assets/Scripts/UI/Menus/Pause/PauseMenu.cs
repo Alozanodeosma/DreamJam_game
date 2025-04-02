@@ -53,11 +53,21 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
     }
     
-    public void Exit()
+    public void MainMenu()
     {
         SliderMovement.paused = false;
         SliderWalk.paused = false;
         SceneManager.LoadScene("MenuScene");
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
+
+    public void ToggleFullScreen()
+    {
+        Screen.fullScreen = !Screen.fullScreen;
     }
     private void OnResolutionChanged(int index)
     {

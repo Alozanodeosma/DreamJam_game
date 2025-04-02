@@ -42,17 +42,11 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEnd
     }
     
     public static bool canDrag = false;
-    private bool cursorChanged = false;
     public static bool paused= false;
     void IDragHandler.OnDrag(UnityEngine.EventSystems.PointerEventData eventData)
     {
         if(canDrag)
         {
-            if (PlayerManager.activateCursorChange && !cursorChanged)
-            {
-                Cursor.SetCursor(cursorClosedTexture, Vector2.zero, CursorMode.Auto);
-                cursorChanged = true;
-            } 
             mousePositionInCameraCoords = Input.mousePosition - screenPosition;
         float angle = Mathf.Atan2(mousePositionInCameraCoords.y, mousePositionInCameraCoords.x) * Mathf.Rad2Deg-90;
         if (angle > 0)
@@ -79,10 +73,6 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEnd
 
     void IEndDragHandler.OnEndDrag(PointerEventData eventData)
     {
-        if(PlayerManager.activateCursorChange){
-        Cursor.SetCursor(cursorOpenedTexture, Vector2.zero, CursorMode.Auto);
-        cursorChanged = false;
-        }
         angleOffset = 0;
         if (canDrag)
         {
@@ -94,6 +84,11 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEnd
             }
         }
         canDrag = false;
+
+        if (transform.eulerAngles.z >= 0 && transform.eulerAngles.z <= 25)
+        {
+            SteamAchievementsManager.UnlockAchievement(SteamAchievementsManager.archWalk);
+        }
     }
     private IEnumerator RotateToZero()
     {

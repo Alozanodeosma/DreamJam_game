@@ -18,7 +18,6 @@ public class PlayerManager : MonoBehaviour
     
     void Start()
     {
-        SteamAchievementsManager.ResetAllAchievements();
        InitializeIntroText();
        StartCoroutine(TextCoroutine.AppearText(introTextComponent, introTextSpeed, introText, true));
        
