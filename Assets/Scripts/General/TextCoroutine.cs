@@ -9,9 +9,8 @@ public static class TextCoroutine
     private static GameObject panel;
     private static bool showingText = false;
     private static bool panelCreated = false;
-    
     public static IEnumerator AppearText(TMP_Text textComponent, float letterAppearDelay, Queue<string> textToShow,
-        bool activeBlackPannel = false)
+        bool activeBlackPannel = false, AudioSource letterSound = null)
     {
         float originalLetterAppearDelay = letterAppearDelay;
         while (textToShow.Count > 0)
@@ -34,6 +33,10 @@ public static class TextCoroutine
                 
                 for (int i = 0; i < parsedText.Length; i++)
                 {
+                    if (letterSound != null)
+                    {
+                        letterSound.Play();
+                    }
                     textComponent.maxVisibleCharacters++;
                     yield return new WaitForSeconds(letterAppearDelay);
                 }

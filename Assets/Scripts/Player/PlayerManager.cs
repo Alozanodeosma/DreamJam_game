@@ -11,7 +11,7 @@ public class PlayerManager : MonoBehaviour
     private Queue<string> introText = new Queue<string>() ;
     public static bool cancelDragWhenOutOfTheDial = false;
     public static bool activateCursorChange = false;
-    
+    [SerializeField] AudioSource letterSound;
     
     [SerializeField] private GameObject SkipButton;
     [SerializeField] private GameObject ShowSkipButton;
@@ -19,7 +19,7 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
        InitializeIntroText();
-       StartCoroutine(TextCoroutine.AppearText(introTextComponent, introTextSpeed, introText, true));
+       StartCoroutine(TextCoroutine.AppearText(introTextComponent, introTextSpeed, introText, true, letterSound));
     }
 
     private void InitializeIntroText()
