@@ -20,7 +20,6 @@ public class PlayerManager : MonoBehaviour
     {
        InitializeIntroText();
        StartCoroutine(TextCoroutine.AppearText(introTextComponent, introTextSpeed, introText, true));
-       
     }
 
     private void InitializeIntroText()
