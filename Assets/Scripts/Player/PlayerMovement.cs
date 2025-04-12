@@ -11,9 +11,15 @@ public class PlayerMovement : MonoBehaviour
 
     public float speed = 5f;
     public Vector3 moveDirection;
+    Rigidbody rb;
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
     void FixedUpdate()
     {
-        transform.position += moveDirection * (speed * Time.deltaTime);
+        rb.MovePosition(rb.position + moveDirection * speed * Time.fixedDeltaTime);
+        //transform.position += moveDirection * (speed * Time.deltaTime);
         if(sliderRotation.GetComponent<RectTransform>().eulerAngles.z != transform.rotation.eulerAngles.y)
         {
             Rotate(sliderRotation.GetComponent<Transform>().eulerAngles.z);

@@ -38,6 +38,7 @@ public class PlayerManager : MonoBehaviour
     {
         introTextComponent.transform.position = new Vector3(10000, 10000, 10000); //chapuzada historica, hace que no se vea la corrutina cuando se skipea
         GameObject.Find("Panel").SetActive(false);
+        gameObject.GetComponent<AudioSource>().volume = 0;
         SkipButton.SetActive(false);
     }
     
