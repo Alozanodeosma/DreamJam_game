@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject sliderRotation;
+    [SerializeField] private Camera mainCamera;
 
     public float speed = 5f;
     public Vector3 moveDirection;
@@ -23,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
         if(sliderRotation.GetComponent<RectTransform>().eulerAngles.z != transform.rotation.eulerAngles.y)
         {
             Rotate(sliderRotation.GetComponent<Transform>().eulerAngles.z);
+            mainCamera.transform.rotation = Quaternion.Euler(0, -sliderRotation.GetComponent<Transform>().eulerAngles.z, 0);
         }
     }
     public void Rotate(float y)
