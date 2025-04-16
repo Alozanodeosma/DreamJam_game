@@ -15,7 +15,8 @@ public class PlayerManager : MonoBehaviour
     
     [SerializeField] private GameObject SkipButton;
     [SerializeField] private GameObject ShowSkipButton;
-    
+    [SerializeField] private AudioSource audioCinematic;
+
     void Start()
     {
        InitializeIntroText();
@@ -40,6 +41,8 @@ public class PlayerManager : MonoBehaviour
         GameObject.Find("Panel").SetActive(false);
         gameObject.GetComponent<AudioSource>().volume = 0;
         SkipButton.SetActive(false);
+
+        audioCinematic.volume = 0; //quitar sonido cinematica, ns si el volume = 0 de dos lineas mas servia para esto
     }
     
 }

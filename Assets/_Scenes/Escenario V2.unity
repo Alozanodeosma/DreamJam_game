@@ -107207,6 +107207,10 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 1.61
       objectReference: {fileID: 0}
+    - target: {fileID: 8792526249560198774, guid: 1ba626bcd97b8b64d9a202608db4a2f1, type: 3}
+      propertyPath: m_BaseOffset
+      value: -0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 9081033453826823584, guid: 1ba626bcd97b8b64d9a202608db4a2f1, type: 3}
       propertyPath: m_Name
       value: Monster
@@ -213514,6 +213518,7 @@ MonoBehaviour:
   letterSound: {fileID: 1718500693}
   SkipButton: {fileID: 683790209}
   ShowSkipButton: {fileID: 172821596}
+  audioCinematic: {fileID: 8638401754887171635}
 --- !u!33 &4459613821822498161
 MeshFilter:
   m_ObjectHideFlags: 0

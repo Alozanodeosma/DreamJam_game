@@ -15,11 +15,13 @@ public class MonsterNavAI : MonoBehaviour
     public float innerRange;
     public float outerRange;
     public float distance;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        agent= GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();
         agent.speed = startWiwiSpeed;
     }
 
@@ -34,11 +36,13 @@ public class MonsterNavAI : MonoBehaviour
         if (distance > outerRange)
         {
             agent.speed = wiwiSprintSpeed;
+            animator.speed = 1.22f;
             //print("sprint: " + agent.speed);
         }
         else if (distance < innerRange)
         {
             agent.speed = startWiwiSpeed;
+            animator.speed = 0.6f;
             //print("andar: " + agent.speed);
         }
     }
