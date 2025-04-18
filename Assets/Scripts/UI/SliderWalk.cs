@@ -26,7 +26,8 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEnd
     public AudioSource ding;
     public AudioSource mmmmmh;
     public AudioSource steps;
-   
+    public float fadeinTime = 1f;
+
     bool tikPlaying = false;
     void Start()
     {
@@ -95,10 +96,21 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEnd
         if (!tikPlaying)
         {
             tik.pitch = 1;
+            tik.volume = 0f;
             tik.Play();
+
+            mmmmmh.volume = 0f;
             mmmmmh.Play();
+
+            steps.volume = 0f;
             steps.Play();
+
+            StartCoroutine(FadeIn(tik, fadeinTime, 1));
+            StartCoroutine(FadeIn(mmmmmh, fadeinTime, 0.3f));
+            StartCoroutine(FadeIn(steps, fadeinTime, 1));
+
             tikPlaying = true;
+
         }
         
         while (this.transform.eulerAngles.z <= -5 || this.transform.eulerAngles.z >= 5)
@@ -115,6 +127,20 @@ public class SliderWalk : MonoBehaviour, IPointerDownHandler, IDragHandler, IEnd
         tikPlaying = false;
         ding.Play();
         transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, 0);
+    }
+    private IEnumerator FadeIn(AudioSource audioSource, float duration, float targetVolume)
+    {
+        float currentTime = 0f;
+        audioSource.volume = 0f;
+
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(0f, targetVolume, currentTime / duration);
+            yield return null;
+        }
+
+        audioSource.volume = targetVolume;
     }
 
 }

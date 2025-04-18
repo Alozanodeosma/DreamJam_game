@@ -42,7 +42,7 @@ public class MonsterNavAI : MonoBehaviour
         else if (distance < innerRange)
         {
             agent.speed = startWiwiSpeed;
-            animator.speed = 0.6f;
+            animator.speed = 0.58f;
             //print("andar: " + agent.speed);
         }
     }

@@ -11,6 +11,8 @@ public class StartCinematic : MonoBehaviour
     [SerializeField] private VideoPlayer videoPlayer;
     [SerializeField] private GameObject GUI;
     [SerializeField] private GameObject bicho;
+    [SerializeField] private GameObject blackScreen;
+
 
     private void Start()
     {
@@ -26,6 +28,7 @@ public class StartCinematic : MonoBehaviour
 
             videoPlayer.gameObject.SetActive(true);
             videoFinal.SetActive(true);
+            blackScreen.SetActive(true);
             GUI.SetActive(false);
             bicho.SetActive(false);
         }
