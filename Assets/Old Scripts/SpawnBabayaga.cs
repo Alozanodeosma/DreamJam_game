@@ -23,7 +23,7 @@ public class SpawnBabayaga : MonoBehaviour
         {
             //spawn babayaga
             babayaga.SetActive(true);
-            StartCoroutine(TextCoroutine.AppearText(introTextComponent, textSpeed, text));
+            TextCoroutine.Instance.StartAppearingText(introTextComponent, textSpeed, text);
         }
     }
 

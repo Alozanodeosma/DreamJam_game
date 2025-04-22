@@ -57,6 +57,7 @@ public class PauseMenu : MonoBehaviour
     {
         SliderMovement.paused = false;
         SliderWalk.paused = false;
+        SceneManager.UnloadSceneAsync("Escenario V2");
         SceneManager.LoadScene("MenuScene");
     }
 

@@ -16,6 +16,7 @@ public class ButtonManager : MonoBehaviour
     [SerializeField] private GameObject button3;
     [SerializeField] private GameObject introImage;
 
+
     public void MenuToSettings()
     {
         menu.SetActive(false);
