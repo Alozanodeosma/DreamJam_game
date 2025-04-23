@@ -50,6 +50,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
         SliderMovement.paused = false;
         SliderWalk.paused = false;
+        AudioListener.pause = false;
         pauseMenu.SetActive(false);
     }
     
@@ -57,7 +58,7 @@ public class PauseMenu : MonoBehaviour
     {
         SliderMovement.paused = false;
         SliderWalk.paused = false;
-        SceneManager.UnloadSceneAsync("Escenario V2");
+        Resume();
         SceneManager.LoadScene("MenuScene");
     }
 
@@ -100,7 +101,6 @@ public class PauseMenu : MonoBehaviour
         {
             // Apply the new resolution
             Screen.SetResolution(width, height, Screen.fullScreen);
-            Debug.Log($"Resolution set to: {width}x{height}");
         }
     }
 }

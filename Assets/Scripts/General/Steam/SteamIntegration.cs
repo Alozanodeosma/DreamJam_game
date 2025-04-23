@@ -10,7 +10,7 @@ public class SteamIntegration : MonoBehaviour
         try
         {
             Steamworks.SteamClient.Init(3363200);
-            PrintName();
+            //PrintName();
         }
         catch (System.Exception e)
         {

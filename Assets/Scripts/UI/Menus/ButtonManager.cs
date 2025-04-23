@@ -41,6 +41,11 @@ public class ButtonManager : MonoBehaviour
         SceneManager.LoadScene("MenuScene");
     }
 
+    public void Retry()
+    {
+        SceneManager.LoadScene("Escenario V2");
+    }
+
     public void Exit()
     {
         Application.Quit();

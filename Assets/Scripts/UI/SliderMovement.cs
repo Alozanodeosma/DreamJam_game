@@ -126,8 +126,6 @@ public class SliderMovement : MonoBehaviour, IPointerDownHandler, IDragHandler, 
             {
                 if (previousAngleInt < currentAngleInt) turnsCounter++;
                 else turnsCounter--;
-                Debug.Log(previousAngleInt + " " + currentAngleInt);
-                Debug.Log(turnsCounter);
             }
             previousAngleInt = currentAngleInt;
             if (turnsCounter == 3 || turnsCounter == -3)

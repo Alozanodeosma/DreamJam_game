@@ -22,7 +22,6 @@ public class PlayerManager : MonoBehaviour
 
     void Start()
     {
-        Time.timeScale = 1;
         InitializeIntroText();
         StartCoroutine(StartTextSafely());
     }
@@ -51,10 +50,11 @@ public class PlayerManager : MonoBehaviour
     public void SkipCinematic()
     {
         introTextComponent.text = "";
+        introTextComponent.transform.position = new Vector3(100, 100, 100);
         GameObject.Find("Panel").SetActive(false);
         gameObject.GetComponent<AudioSource>().volume = 0;
         SkipButton.SetActive(false);
-        TextCoroutine.Instance.StopAllCoroutines();
+
         audioCinematic.volume = 0; //quitar sonido cinematica, ns si el volume = 0 de dos lineas mas servia para esto
     }
 
