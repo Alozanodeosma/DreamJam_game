@@ -12,12 +12,21 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     private static bool paused = false;
     public TMP_Dropdown resolutionDropdown;
-    
+    [SerializeField] private Toggle toggleFullScreen;
     void Start()
     {
         resolutionDropdown.onValueChanged.AddListener(OnResolutionChanged);
+
     }
- 
+    private void OnEnable()
+    {
+        if (ButtonManager.resolutionIndex != 0)
+        {
+            resolutionDropdown.value = ButtonManager.resolutionIndex;
+        }
+        toggleFullScreen.isOn = ButtonManager.isFullScreen;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -70,6 +79,7 @@ public class PauseMenu : MonoBehaviour
     public void ToggleFullScreen()
     {
         Screen.fullScreen = !Screen.fullScreen;
+        ButtonManager.isFullScreen = Screen.fullScreen;
     }
     private void OnResolutionChanged(int index)
     {
@@ -96,11 +106,13 @@ public class PauseMenu : MonoBehaviour
                 SetResolution(1920, 1080); // Default to Full HD if something unexpected happens
                 break;
         }
+        ButtonManager.resolutionIndex = index;
 
-        void SetResolution(int width, int height)
-        {
-            // Apply the new resolution
-            Screen.SetResolution(width, height, Screen.fullScreen);
-        }
+    }
+
+    void SetResolution(int width, int height)
+    {
+        // Apply the new resolution
+        Screen.SetResolution(width, height, Screen.fullScreen);
     }
 }

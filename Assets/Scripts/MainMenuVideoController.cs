@@ -21,5 +21,4 @@ public class MainMenuVideoController : MonoBehaviour
     {
         SceneManager.LoadScene("Escenario V2");
     }
-
 }

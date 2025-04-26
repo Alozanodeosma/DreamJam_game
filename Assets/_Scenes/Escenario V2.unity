@@ -213480,6 +213480,7 @@ MonoBehaviour:
   handle: {fileID: 5177011687546657480}
   fill: {fileID: 3142304539618754717}
   mixer: {fileID: 24100000, guid: 0860f66ae50f76742bc72cc3169a3e4b, type: 2}
+  videoplayer: {fileID: 0}
   volume: 50
   dialSensitivity: 5
   tik: {fileID: 791767687}
@@ -213566,6 +213567,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 5870475703325415518}
   resolutionDropdown: {fileID: 7527917661227435773}
+  toggleFullScreen: {fileID: 112105459}
 --- !u!33 &4287310743071539276
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -217453,7 +217455,7 @@ AudioSource:
   m_GameObject: {fileID: 8638401754887171634}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 0860f66ae50f76742bc72cc3169a3e4b, type: 2}
   m_audioClip: {fileID: 8300000, guid: 711268517f05f994a9fa2a5098ddc0b8, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1

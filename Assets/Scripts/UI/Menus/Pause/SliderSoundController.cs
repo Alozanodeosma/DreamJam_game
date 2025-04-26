@@ -3,11 +3,15 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class SliderSoundController : MonoBehaviour {
     [SerializeField] Transform handle;
     [SerializeField] Image fill;
     [SerializeField] AudioMixer mixer;
+
+    [SerializeField] VideoPlayer videoplayer;
+
     Vector3 mousePos;
     private int previousAngle = 0;
     public float volume;
@@ -19,6 +23,8 @@ public class SliderSoundController : MonoBehaviour {
     private void Start()
     {
         tik.ignoreListenerPause = true;
+        //get audiomixer volume
+      
     }
 
     public void onHandleDrag() {
@@ -54,6 +60,11 @@ public class SliderSoundController : MonoBehaviour {
         float logValue = Mathf.Log10(fillValue);
         
         
+        if(videoplayer != null)
+        {
+            videoplayer.SetDirectAudioVolume(0, logValue);
+        }
+
         mixer.SetFloat("MasterParam", logValue * volume);
     }
 }
