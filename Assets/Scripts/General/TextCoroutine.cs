@@ -75,7 +75,7 @@ public class TextCoroutine: MonoBehaviour
             if (activeBlackPanel && panel != null)
             {
                 panel.GetComponent<Image>().color = new Color(0, 0, 0, i);
-                if (panel.GetComponent<Image>().color.a <= 0) Destroy(panel);
+                if (panel.GetComponent<Image>().color.a <= 0.1) Destroy(panel);
             }
 
             CheckForSetActiveSkipButton();
