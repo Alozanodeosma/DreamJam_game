@@ -40,8 +40,7 @@ public class SliderSoundController : MonoBehaviour, IPointerDownHandler, IDragHa
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
         //if slider rotation on z axis is not 0
-        if (SliderWalk.canDrag)
-        {
+
             screenPosition = camera.WorldToScreenPoint(transform.position);
             Vector3 vec3 = Input.mousePosition - screenPosition;
             angleMouseDown = (Mathf.Atan2(vec3.y, vec3.x)) * Mathf.Rad2Deg - 90;
@@ -51,11 +50,6 @@ public class SliderSoundController : MonoBehaviour, IPointerDownHandler, IDragHa
             }
             angleOffset = angleMouseDown - posIni;
             getFirstAngleForTurnAchievement = true;
-        }
-        else
-        {
-            eventData.pointerDrag = null;
-        }
     }
 
     public float angle = 0;
@@ -69,8 +63,7 @@ public class SliderSoundController : MonoBehaviour, IPointerDownHandler, IDragHa
 
     void IDragHandler.OnDrag(UnityEngine.EventSystems.PointerEventData eventData)
     {
-        if (SliderWalk.canDrag)
-        {
+
             Vector3 mousePositionInDial = Input.mousePosition - screenPosition;
             angle = Mathf.Atan2(mousePositionInDial.y, mousePositionInDial.x) * Mathf.Rad2Deg - 90;
             if (angle > 0)
@@ -116,11 +109,6 @@ public class SliderSoundController : MonoBehaviour, IPointerDownHandler, IDragHa
 
             if (!gameObject.activeSelf) { eventData.pointerDrag = null; }
 
-        }
-        else
-        {
-            eventData.pointerDrag = null;
-        }
     }
 }
 

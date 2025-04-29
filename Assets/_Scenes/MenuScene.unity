@@ -5327,7 +5327,7 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Full HD (1920x1080)
       m_Image: {fileID: 0}
-    - m_Text: WXGA (1366x768)
+    - m_Text: HD (1280x720)
       m_Image: {fileID: 0}
     - m_Text: QHD (2560x1440)
       m_Image: {fileID: 0}

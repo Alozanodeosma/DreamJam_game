@@ -105,7 +105,7 @@ public class ButtonManager : MonoBehaviour
         {
             case 0:
                 // HD (1280x720)
-                SetResolution(1280, 720);
+                SetResolution(1920, 1080);
                 break;
             case 1:
                 // Full HD (1920x1080)
@@ -113,7 +113,7 @@ public class ButtonManager : MonoBehaviour
                 break;
             case 2:
                 // WXGA 
-                SetResolution(1280, 800);
+                SetResolution(1280, 720);
                 break;
             case 3:
                 // QHD 
