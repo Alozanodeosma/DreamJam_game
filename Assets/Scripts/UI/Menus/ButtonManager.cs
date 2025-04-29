@@ -23,28 +23,25 @@ public class ButtonManager : MonoBehaviour
     public static int resolutionIndex = 0;
     public static bool isFullScreen = true;
 
-    private void OnEnable()
+    private void Start()
     {
-        if (resolutionIndex != resolutionDropdown.value)
-        {
-            resolutionDropdown.value = resolutionIndex;
-        }
-        toggleFullScreen.isOn = isFullScreen;
-
+        resolutionDropdown.onValueChanged.AddListener(OnResolutionChanged);
+        isFullScreen = Screen.fullScreen;
+        resolutionDropdown.value = resolutionIndex;
     }
 
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.Escape))
         {
+            
             Options();
+            //get screen resolution and fullscreen mode
+            //game window resolution
         }
-    }
-    private void Start()
-    {
-        resolutionDropdown.onValueChanged.AddListener(OnResolutionChanged);
-    }
 
+    }
+    
     public void MenuToSettings()
     {
         menu.SetActive(false);
@@ -107,18 +104,22 @@ public class ButtonManager : MonoBehaviour
         switch (index)
         {
             case 0:
+                // HD (1280x720)
+                SetResolution(1280, 720);
+                break;
+            case 1:
                 // Full HD (1920x1080)
                 SetResolution(1920, 1080);
                 break;
-            case 1:
+            case 2:
                 // WXGA 
                 SetResolution(1280, 800);
                 break;
-            case 2:
+            case 3:
                 // QHD 
                 SetResolution(2560, 1440);
                 break;
-            case 3:
+            case 4:
                 // 4K 
                 SetResolution(3840, 2160);
                 break;
@@ -126,7 +127,7 @@ public class ButtonManager : MonoBehaviour
                 SetResolution(1920, 1080); // Default to Full HD if something unexpected happens
                 break;
         }
-        resolutionIndex = index;
+                resolutionIndex = index;
 
     }
     void SetResolution(int width, int height)

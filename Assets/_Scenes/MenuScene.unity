@@ -3202,6 +3202,10 @@ MonoBehaviour:
   volume: 50
   dialSensitivity: 5
   tik: {fileID: 1032578981}
+  camera: {fileID: 1569140311}
+  angleMouseDown: 0
+  angleMouseUp: 0
+  angle: 0
 --- !u!114 &1032578984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5319,6 +5323,8 @@ MonoBehaviour:
   m_Value: 0
   m_Options:
     m_Options:
+    - m_Text: '-'
+      m_Image: {fileID: 0}
     - m_Text: Full HD (1920x1080)
       m_Image: {fileID: 0}
     - m_Text: WXGA (1366x768)

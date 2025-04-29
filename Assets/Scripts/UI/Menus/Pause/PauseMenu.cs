@@ -16,15 +16,7 @@ public class PauseMenu : MonoBehaviour
     void Start()
     {
         resolutionDropdown.onValueChanged.AddListener(OnResolutionChanged);
-
-    }
-    private void OnEnable()
-    {
-        if (ButtonManager.resolutionIndex != 0)
-        {
-            resolutionDropdown.value = ButtonManager.resolutionIndex;
-        }
-        toggleFullScreen.isOn = ButtonManager.isFullScreen;
+        resolutionDropdown.value = ButtonManager.resolutionIndex;
     }
 
     // Update is called once per frame
@@ -35,6 +27,7 @@ public class PauseMenu : MonoBehaviour
             Pause();
         }
     }
+
 
     public void Pause()
     {
@@ -79,7 +72,6 @@ public class PauseMenu : MonoBehaviour
     public void ToggleFullScreen()
     {
         Screen.fullScreen = !Screen.fullScreen;
-        ButtonManager.isFullScreen = Screen.fullScreen;
     }
     private void OnResolutionChanged(int index)
     {
@@ -87,18 +79,22 @@ public class PauseMenu : MonoBehaviour
         switch (index)
         {
             case 0:
+                // HD (1280x720)
+                SetResolution(1280, 720);
+                break;
+            case 1:
                 // Full HD (1920x1080)
                 SetResolution(1920, 1080);
                 break;
-            case 1:
+            case 2:
                 // WXGA 
                 SetResolution(1280, 800);
                 break;
-            case 2:
+            case 3:
                 // QHD 
                 SetResolution(2560, 1440);
                 break;
-            case 3:
+            case 4:
                 // 4K 
                 SetResolution(3840, 2160);
                 break;

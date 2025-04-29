@@ -1,11 +1,15 @@
 using System;
+using System.Drawing;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.Video;
 
-public class SliderSoundController : MonoBehaviour {
+public class SliderSoundController : MonoBehaviour, IPointerDownHandler, IDragHandler
+{
     [SerializeField] Transform handle;
     [SerializeField] Image fill;
     [SerializeField] AudioMixer mixer;
@@ -13,7 +17,6 @@ public class SliderSoundController : MonoBehaviour {
     [SerializeField] VideoPlayer videoplayer;
 
     Vector3 mousePos;
-    private int previousAngle = 0;
     public float volume;
     float fillValue = 0.8f;
     public int dialSensitivity = 5;
@@ -24,47 +27,115 @@ public class SliderSoundController : MonoBehaviour {
     {
         tik.ignoreListenerPause = true;
         //get audiomixer volume
-      
+
     }
 
-    public void onHandleDrag() {
-        mousePos = Input.mousePosition;
-        Vector2 dir = mousePos - handle.position;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        angle = (angle <= 0) ? (360 + angle) : angle;
-        Quaternion r = Quaternion.AngleAxis(angle + 135f, Vector3.forward);
-        handle.rotation = r;
-
-
-        if ((int)angle / dialSensitivity != previousAngle)
+    public Camera camera;
+    private Vector3 screenPosition;
+    private float angleOffset;
+    public float angleMouseDown = 0;
+    public float angleMouseUp = 0;
+    float posIni = 0;
+    private bool getFirstAngleForTurnAchievement = true;
+    void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
+    {
+        //if slider rotation on z axis is not 0
+        if (SliderWalk.canDrag)
         {
-            if ((int)angle / dialSensitivity < previousAngle)
+            screenPosition = camera.WorldToScreenPoint(transform.position);
+            Vector3 vec3 = Input.mousePosition - screenPosition;
+            angleMouseDown = (Mathf.Atan2(vec3.y, vec3.x)) * Mathf.Rad2Deg - 90;
+            if (angleMouseDown > 0)
             {
-                fillValue += 0.005f;
+                angleMouseDown = angleMouseDown - 360;
             }
-            else
-            {
-                fillValue -= 0.005f;
-            }
-
-            if(!tik.isPlaying) tik.Play();
-            fillValue = Mathf.Clamp01(fillValue);
-            previousAngle = (int)angle/dialSensitivity;
+            angleOffset = angleMouseDown - posIni;
+            getFirstAngleForTurnAchievement = true;
         }
-        
-        
-        
-        fill.fillAmount = fillValue;
-        
-        // Evitar logaritmo de cero o valores negativos
-        float logValue = Mathf.Log10(fillValue);
-        
-        
-        if(videoplayer != null)
+        else
         {
-            videoplayer.SetDirectAudioVolume(0, logValue);
+            eventData.pointerDrag = null;
         }
+    }
 
-        mixer.SetFloat("MasterParam", logValue * volume);
+    public float angle = 0;
+    private int previousAngle = 0;
+    private int currentAngleAudio = 0;
+    private float currentAngle = 0;
+    private int currentAngleInt = 0;
+    private int startingAngle;
+    private int turnsCounter = 0;
+    private int previousAngleInt = 0;
+
+    void IDragHandler.OnDrag(UnityEngine.EventSystems.PointerEventData eventData)
+    {
+        if (SliderWalk.canDrag)
+        {
+            Vector3 mousePositionInDial = Input.mousePosition - screenPosition;
+            angle = Mathf.Atan2(mousePositionInDial.y, mousePositionInDial.x) * Mathf.Rad2Deg - 90;
+            if (angle > 0)
+            {
+                angle = angle - 360;
+            }
+            currentAngle = angle - angleOffset;
+            currentAngleInt = (int)currentAngle;
+
+
+            if ((int)angle / dialSensitivity != previousAngle)
+            {
+                if ((int)angle / dialSensitivity < previousAngle)
+                {
+                    fillValue += 0.005f;
+                }
+                else
+                {
+                    fillValue -= 0.005f;
+                }
+
+                if (!tik.isPlaying) tik.Play();
+                fillValue = Mathf.Clamp01(fillValue);
+                previousAngle = (int)angle / dialSensitivity;
+            }
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, (currentAngle));
+
+
+
+            fill.fillAmount = fillValue;
+
+            // Evitar logaritmo de cero o valores negativos
+            float logValue = Mathf.Log10(fillValue);
+
+
+            if (videoplayer != null)
+            {
+                videoplayer.SetDirectAudioVolume(0, logValue);
+            }
+
+            mixer.SetFloat("MasterParam", logValue * volume);
+
+
+            if (!gameObject.activeSelf) { eventData.pointerDrag = null; }
+
+        }
+        else
+        {
+            eventData.pointerDrag = null;
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
